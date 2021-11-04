@@ -8,10 +8,14 @@
 </head>
 <body>
     <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div>
-    <table>
+    <table id="securitiesTable">
         <tr>
             <th>Security Symbol</th>
             <th>Company Name</th>
+        </tr>
+        <tr>
+            <th><input type="text" id="securitySymbolInput" onkeyup="securitySymbolSearch()" placeholder="Search for security symbol..." title="Type in a security symbol"></th>
+            <th><input type="text" id="companyNameInput" onkeyup="companyNameSearch()" placeholder="Search for company name..." title="Type in a company name"></th>
         </tr>
         <tr>
             <td>AAPL</td>
@@ -35,4 +39,50 @@
             <button>Submit</button>
         </form>
     </div>
+
+    <script>
+        function securitySymbolSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("securitySymbolInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("securitiesTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function companyNameSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("companyNameInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("securitiesTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+    </script>
 </body>

@@ -8,11 +8,16 @@
 </head>
 <body>
     <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div>
-    <table>
+    <table id="brokersTable">
         <tr>
             <th>Broker ID</th>
             <th>Broker Name</th>
             <th>Broker Address</th>
+        </tr>
+        <tr>
+            <th><input type="text" id="brokerIdInput" onkeyup="brokerIdSearch()" placeholder="Search for broker ID..." title="Type in a broker ID"></th>
+            <th><input type="text" id="brokerFirstNameInput" onkeyup="brokerFirstNameSearch()" placeholder="Search for broker first name..." title="Type in a broker first name"></th>
+            <th><input type="text" id="brokerLastNameInput" onkeyup="brokerLastNameSearch()" placeholder="Search for broker last name..." title="Type in a broker last name"></th>
         </tr>
         <tr>
             <td>11</td>
@@ -36,4 +41,72 @@
             <button>Submit</button>
         </form>
     </div>
+
+    <script>
+        function brokerIdSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("brokerIdInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("brokersTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function brokerFirstNameSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("brokerFirstNameInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("brokersTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function brokerLastNameSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("brokerLastNameInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("brokersTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+    </script>
 </body>

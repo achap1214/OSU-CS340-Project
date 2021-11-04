@@ -8,13 +8,18 @@
 </head>
 <body>
     <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div>
-    <table>
+    <table id="managersTable">
         <tr>
             <th>Manager ID</th>
             <th>Manager First Name</th>
             <th>Manager Last Name</th>
             <button>Edit</button>
             <button>Delete</button>
+        </tr>
+        <tr>
+            <th><input type="text" id="managerIdInput" onkeyup="managerIdSearch()" placeholder="Search for manager ID..." title="Type in a manager ID"></th>
+            <th><input type="text" id="managerFirstNameInput" onkeyup="managerFirstNameSearch()" placeholder="Search for manager first name..." title="Type in a manager first name"></th>
+            <th><input type="text" id="managerLastNameInput" onkeyup="managerLastNameSearch()" placeholder="Search for manager last name..." title="Type in a manager last name"></th>
         </tr>
         <tr>
             <td>7</td>
@@ -42,4 +47,72 @@
             <button>Submit</button>
         </form>
     </div>
+
+    <script>
+        function managerIdSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("managerIdInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("managersTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function managerFirstNameSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("managerFirstNameInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("managersTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function managerLastNameSearch() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("managerLastNameInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("managersTable");
+          tr = table.getElementsByTagName("tr");
+        
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+    </script>
 </body>
