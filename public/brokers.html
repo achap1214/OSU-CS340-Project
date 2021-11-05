@@ -5,17 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brokers</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="traders.html">Traders</a>
-        <a href="brokers.html">Brokers</a>
-        <a href="managers.html">Managers</a>
-        <a href="securities.html">Securities</a>
-        <a href="trades.html">Trades</a>
-        <a href="fills.html">Fills</a>
-      </div>
+    <div id=container>
+        <div id="home">
+            <a id="home" href="index.html" class="row" >
+                <img id="chaplogo" src="chaplogo.png" alt="chap logo" class="col-sm-4">
+                <h1 class="col">Chap Corporation</h1>
+            </a>
+        </div>
+        <nav class="navbar navbar-expand-sm row">
+            <ul class="navbar-nav">
+              <li class="nav-item col">
+                <a class="nav-link" href="traders.html">Traders</a>
+              </li>
+              <li class="nav-item col">
+                <a class="nav-link" href="brokers.html">Brokers</a>
+              </li>
+              <li class="nav-item col">
+                <a class="nav-link" href="managers.html">Managers</a>
+              </li>
+              <li class="nav-item col">
+                  <a class="nav-link" href="securites.html">Securities</a>
+               </li>
+              <li class="nav-item col">
+                  <a class="nav-link" href="fills.html">Fills</a>
+              </li>
+              <li class="nav-item col">
+                  <a class="nav-link" href="trades.html">Trades</a>
+              </li>
+            </ul>
+        </nav>
+
+    
     <!-- <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div> -->
     <div><a><h1>Brokers</h1></a></div>
     <!-- <div id="navbar">
@@ -26,42 +54,62 @@
         <a href="fills.html" class="navbarbutton">Fills</a>
         <a href="trades.html" class="navbarbutton">Trades</a>
     </div> -->
-    <table id="brokersTable">
-        <tr>
-            <th>Broker ID</th>
-            <th>Broker Name</th>
-            <th>Broker Address</th>
-        </tr>
-        <tr>
-            <th><input type="text" id="brokerIdInput" onkeyup="brokerIdSearch()" placeholder="Search for broker ID..." title="Type in a broker ID"></th>
-            <th><input type="text" id="brokerFirstNameInput" onkeyup="brokerFirstNameSearch()" placeholder="Search for broker first name..." title="Type in a broker first name"></th>
-            <th><input type="text" id="brokerLastNameInput" onkeyup="brokerLastNameSearch()" placeholder="Search for broker last name..." title="Type in a broker last name"></th>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Goldman Sachs</td>
-            <td>NYC</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>JP Morgan</td>
-            <td>NYC</td>
-        </tr>
-    </table>
+    <div class="container mt-3">
+        <table id="brokersTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Broker ID</th>
+                <th>Broker Name</th>
+                <th>Broker Address</th>
+            </tr>
+        </thead>
+            <tr>
+                <th><input type="text" id="brokerIdInput" onkeyup="brokerIdSearch()" placeholder="Search for broker ID..." title="Type in a broker ID"></th>
+                <th><input type="text" id="brokerFirstNameInput" onkeyup="brokerFirstNameSearch()" placeholder="Search for broker first name..." title="Type in a broker first name"></th>
+                <th><input type="text" id="brokerLastNameInput" onkeyup="brokerLastNameSearch()" placeholder="Search for broker last name..." title="Type in a broker last name"></th>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Goldman Sachs</td>
+                <td>NYC</td>
+                <td>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>JP Morgan</td>
+                <td>NYC</td>
+                <td>
+                    <button class="btn btn-warning">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
     <div id="form">
-        <form>
-            <label>Broker ID:</label>
-            <input type="text" name="Broker ID" placeholder="Enter Broker ID">
-            <br>
-            <label>Broker Name:</label>
-            <input type="text" name="Broker Name" placeholder="Enter Broker Name">
-            <br>
-            <label>Broker Address:</label>
-            <input type="text" name="Broker Address" placeholder="Enter Broker Address">
-            <br>
-            <button>Submit</button>
-        </form>
+        <div class="container mt-3" id="form">
+            <h3>Add Broker</h3>
+            <form >
+              <div class="mb-3 mt-3">
+                <label for="BrokerID">Broker ID</label>
+                <input type="brokerID" class="form-control" id="traderID" placeholder="Enter email">
+              </div>
+              <div class="mb-3">
+                <label for="pwd">Broker Name</label>
+                <input type="brokerName" class="form-control" id="brokerName" placeholder="Enter Broker Name">
+              </div>
+              <div class="mb-3">
+                <label for="pwd">Broker Address</label>
+                <input type="brokerAddress" class="form-control" id="brokerAddress" placeholder="Enter Broker Address">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
     </div>
 
     <script type = "text/javascript" src="SearchFunctions.js"></script>
 </body>
+</html>
