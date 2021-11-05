@@ -1,25 +1,18 @@
 body {
-    font-family: Helvetica;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #home {
     text-align: left;
     text-decoration: none;
-    background-color: navy;
+    background-color: lightblue;
     padding-left: 10px
     
 }
 
 h1{
-    color: whitesmoke;
-    padding-top: 20px
-}
-#navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: navy;
-    font: white;
-    align-items: center;
+    color: navy;
+    padding-top: 20px;
 }
 
 ul {
@@ -53,6 +46,5 @@ li a {
 }
 
 nav{
-    background-color: lightgray;
+    background-color: navy;
 }
-
