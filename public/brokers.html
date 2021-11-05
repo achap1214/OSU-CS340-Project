@@ -7,15 +7,25 @@
     <title>Brokers</title>
 </head>
 <body>
-    <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div>
-    <div id="navbar">
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="traders.html">Traders</a>
+        <a href="brokers.html">Brokers</a>
+        <a href="managers.html">Managers</a>
+        <a href="securities.html">Securities</a>
+        <a href="trades.html">Trades</a>
+        <a href="fills.html">Fills</a>
+      </div>
+    <!-- <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div> -->
+    <div><a><h1>Brokers</h1></a></div>
+    <!-- <div id="navbar">
         <a href="traders.html" class="navbarbutton">Traders</a>
         <a href="brokers.html" class="navbarbutton">Brokers</a>
         <a href="managers.html" class="navbarbutton">Managers</a>
         <a href="securities.html" class="navbarbutton">Securities</a>
         <a href="fills.html" class="navbarbutton">Fills</a>
         <a href="trades.html" class="navbarbutton">Trades</a>
-    </div>
+    </div> -->
     <table id="brokersTable">
         <tr>
             <th>Broker ID</th>
@@ -41,11 +51,14 @@
     <div id="form">
         <form>
             <label>Broker ID:</label>
-            <input type="text" name="Broker ID" placeholder="Broker ID">
+            <input type="text" name="Broker ID" placeholder="Enter Broker ID">
+            <br>
             <label>Broker Name:</label>
-            <input type="text" name="Broker Name" placeholder="Broker Name">
+            <input type="text" name="Broker Name" placeholder="Enter Broker Name">
+            <br>
             <label>Broker Address:</label>
-            <input type="text" name="Broker Address" placeholder="Broker Address">
+            <input type="text" name="Broker Address" placeholder="Enter Broker Address">
+            <br>
             <button>Submit</button>
         </form>
     </div>
