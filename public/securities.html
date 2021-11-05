@@ -102,5 +102,29 @@
     </div>
 
     <script type = "text/javascript" src="SearchFunctions.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".add-row").click(function(){
+                var traderID = $("#traderID").val();
+                var traderFirstName = $("#firstName").val();
+                var traderLastName = $("#lastName").val();
+                var markup = "<tr><td>" + traderID + "</td><td>" + traderFirstName + "</td><td>" + traderLastName + "</td></tr>";
+                $("table tbody").append(markup);
+            });
+            
+            // Find and remove selected table rows
+            $(".delete-row").click(function(){
+                $("table tbody").find('input[name="record"]').each(function(){
+                    if($(this).is(":checked")){
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+        });    
+    </script>
 </body>
+
 </html>
