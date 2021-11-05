@@ -44,7 +44,7 @@
           </nav>
 
         <div class="container mt-3">
-            <table class="table table-bordered">
+            <table id="tradersTable" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Trader ID</th>
@@ -55,15 +55,12 @@
                 <tr>
                     <th>
                         <input type="text" id="traderIdInput" onkeyup="traderIdSearch()" placeholder="Search for trader ID..." title="Type in a trader ID">
-                        <button class="btn btn-secondary">Search</button>
                     </th>
                     <th>
                         <input type="text" id="traderFirstNameInput" onkeyup="traderFirstNameSearch()" placeholder="Search for trader first name..." title="Type in a trader first name">
-                        <button class="btn btn-secondary">Search</button>
                     </th>
                     <th>
                         <input type="text" id="traderLastNameInput" onkeyup="traderLastNameSearch()" placeholder="Search for trader last name..." title="Type in a trader last name">
-                        <button class="btn btn-secondary">Search</button>
                     </th>
                 </tr>
                 <tr>
@@ -116,62 +113,6 @@
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>
-    <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="traders.html">Traders</a>
-        <a href="brokers.html">Brokers</a>
-        <a href="managers.html">Managers</a>
-        <a href="securities.html">Securities</a>
-        <a href="trades.html">Trades</a>
-        <a href="fills.html">Fills</a>
-      </div>
-    <!-- <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div> -->
-    <div><a><h1>Traders</h1></a></div>
-    <!-- <div id="navbar">
-        <a href="traders.html" class="navbarbutton">Traders</a>
-        <a href="brokers.html" class="navbarbutton">Brokers</a>
-        <a href="managers.html" class="navbarbutton">Managers</a>
-        <a href="securities.html" class="navbarbutton">Securities</a>
-        <a href="fills.html" class="navbarbutton">Fills</a>
-        <a href="trades.html" class="navbarbutton">Trades</a>
-    </div> -->
-    <table id="tradersTable">
-        <tr>
-            <th>Trader ID</th>
-            <th>Trader First Name</th>
-            <th>Trader Last Name</th>
-        </tr>
-        <tr>
-            <th><input type="text" id="traderIdInput" onkeyup="traderIdSearch()" placeholder="Search for trader ID..." title="Type in a trader ID"></th>
-            <th><input type="text" id="traderFirstNameInput" onkeyup="traderFirstNameSearch()" placeholder="Search for trader first name..." title="Type in a trader first name"></th>
-            <th><input type="text" id="traderLastNameInput" onkeyup="traderLastNameSearch()" placeholder="Search for trader last name..." title="Type in a trader last name"></th>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>James</td>
-            <td>McAvoy</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Michael</td>
-            <td>Fassbender</td>
-        </tr>
-    </table>
-
-    <div id="form">
-        <form>
-            <label>Trader ID:</label>
-            <input type="text" name="Trader ID" placeholder="Enter Trader ID">
-            <br>
-            <label>First Name:</label>
-            <input type="text" name="Trader First Name" placeholder="Enter Trader First Name">
-            <br>
-            <label>Last Name:</label>
-            <input type="text" name="Trader Last Name" placeholder="Enter Trader Last Name">
-            <br>
-            <button>Submit</button>
-        </form>
-    </div>
     <script type = "text/javascript" src="SearchFunctions.js"></script>
 </body>
 </html>
