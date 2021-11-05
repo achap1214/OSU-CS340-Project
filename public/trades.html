@@ -42,75 +42,104 @@
               </li>
             </ul>
         </nav>
-    <table>
-        <tr>
-            <th>Trade ID</th>
-            <th>Security Symbol</th>
-            <th>Amount</th>
-            <th>Trader ID</th>
-            <th>Manager ID</th>
-            <th>Manager ID</th>
-            <th>Time</th>
-            <th>Date</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>AAPL</td>
-            <td>300</td>
-            <td>4</td>
-            <td>7</td>
-            <td>11</td>
-            <td>9:30</td>
-            <td>12/21/12</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>AMZN</td>
-            <td>200</td>
-            <td>4</td>
-            <td>9</td>
-            <td>11</td>
-            <td>9:35</td>
-            <td>12/21/12</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>MSFT</td>
-            <td>500</td>
-            <td>6</td>
-            <td>9</td>
-            <td>12</td>
-            <td>9:45</td>
-            <td>12/21/12</td>
-        </tr>
-    </table>
-    <div id="form">
-        <form>
-            <label>Trade ID:</label>
-            <input type="text" name="Trade ID" placeholder="Enter Trade ID">
-            <br>
-            <label>Security Symbol:</label>
-            <input type="text" name="Security Symbol" placeholder="Enter Security Symbol">
-            <br>
-            <label>Amount:</label>
-            <input type="text" name="Amount" placeholder="Enter Amount">
-            <br>
-            <label>Trader ID:</label>
-            <input type="text" name="Trader ID" placeholder="Enter Trader ID">
-            <br>
-            <label>Manager ID:</label>
-            <input type="text" name="Manager ID" placeholder="Enter Manager ID">
-            <br>
-            <label>Broker ID:</label>
-            <input type="text" name="Broker ID" placeholder="Enter Broker ID">
-            <br>
-            <label>Time:</label>
-            <input type="text" name="Time" placeholder="Enter Time">
-            <br>
-            <label>Date:</label>
-            <input type="text" name="Date" placeholder="Enter Date">
-            <br>
-            <button>Submit</button>
+        <div class="container mt-3">
+            <div><a><h2>Trades</h2></a></div>
+            <table id="tradesTable"class=" table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Trade ID</th>
+                        <th>Security Symbol</th>
+                        <th>Amount</th>
+                        <th>Trader ID</th>
+                        <th>Manager ID</th>
+                        <th>Broker ID</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>AAPL</td>
+                        <td>300</td>
+                        <td>4</td>
+                        <td>7</td>
+                        <td>11</td>
+                        <td>9:30</td>
+                        <td>12/21/12</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>AMZN</td>
+                        <td>200</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>11</td>
+                        <td>9:35</td>
+                        <td>12/21/12</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>MSFT</td>
+                        <td>500</td>
+                        <td>6</td>
+                        <td>9</td>
+                        <td>12</td>
+                        <td>9:45</td>
+                        <td>12/21/12</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container mt-3" id="form">
+        <h3>Add Trades</h3>
+        <form >
+          <div class="mb-3 mt-3">
+            <label for="TradeID">Trade ID</label>
+            <input type="tradeID" class="form-control" id="tradeID" placeholder="Enter Trade ID">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Security Symbol</label>
+            <input type="securitySymbol" class="form-control" id="securitySymbol" placeholder="Enter Security Symbol">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Amount</label>
+            <input type="amount" class="form-control" id="amount" placeholder="Enter Amount">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Trader ID</label>
+            <input type="traderID" class="form-control" id="traderID" placeholder="Enter Trader ID">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Manager ID</label>
+            <input type="managerID" class="form-control" id="managerID" placeholder="Enter Manager ID">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Broker ID</label>
+            <input type="brokerID" class="form-control" id="brokerID" placeholder="Enter Broker ID">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Time</label>
+            <input type="time" class="form-control" id="time" placeholder="Enter Time">
+          </div>
+          <div class="mb-3">
+            <label for="pwd">Date</label>
+            <input type="date" class="form-control" id="date" placeholder="Enter Date">
+          </div>
+          <input type="button" class="add-row" value="Add Row">
         </form>
     </div>
 </body>
