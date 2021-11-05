@@ -3,6 +3,56 @@ body {
 }
 
 #home {
-    text-align: center;
-    color: pink
+    text-align: left;
+    text-decoration: none;
+    background-color: navy;
+    padding-left: 10px
+    
 }
+
+h1{
+    color: whitesmoke;
+    padding-top: 20px
+}
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: navy;
+    font: white;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    text-align: center;
+}
+
+li a {
+    display: inline-block;
+    padding: 5px;
+
+}
+
+#tradersTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form {
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chaplogo{
+    width:100px;
+    height:100px;
+}
+
+nav{
+    background-color: lightgray;
+}
+
