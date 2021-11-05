@@ -86,10 +86,10 @@ function traderIdSearch() {
     }
   }
 
-  function brokerFirstNameSearch() {
+  function brokerNameSearch() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("brokerFirstNameInput");
+    input = document.getElementById("brokerNameInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("brokersTable");
     tr = table.getElementsByTagName("tr");
@@ -108,10 +108,10 @@ function traderIdSearch() {
     }
   }
 
-  function brokerLastNameSearch() {
+  function brokerAddressSearch() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("brokerLastNameInput");
+    input = document.getElementById("brokerAddressInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("brokersTable");
     tr = table.getElementsByTagName("tr");
