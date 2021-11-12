@@ -131,10 +131,10 @@ CREATE TABLE `Trades` (
   'Time' Time, NOT UNIQUE, NOT NULL,
   'Date' Date, NOT UNIQUE, NOT NULL,
   PRIMARY KEY (`TradeID`),
-  FOREIGN KEY (`SecuritySymbol`) REFERENCES `Securities` (`SecuritySymbol`),
-  FOREIGN KEY (`TraderID`) REFERENCES `Traders` (`TraderID`),
-  FOREIGN KEY (`ManagerID`) REFERENCES `Managers` (`ManagerID`),
-  FOREIGN KEY (`BrokerID`) REFERENCES `Brokers` (`BrokerID`)
+  CONSTRAINT 'TradesSecuritySymbol' FOREIGN KEY (`SecuritySymbol`) REFERENCES `Securities` (`SecuritySymbol`),
+  CONSTRAINT 'TradesTraderID' FOREIGN KEY (`TraderID`) REFERENCES `Traders` (`TraderID`),
+  CONSTRAINT 'TradesManagerID' FOREIGN KEY (`ManagerID`) REFERENCES `Managers` (`ManagerID`),
+  CONSTRAINT 'TradesBrokerID' FOREIGN KEY (`BrokerID`) REFERENCES `Brokers` (`BrokerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -162,8 +162,8 @@ CREATE TABLE `Fills` (
   'Time' Time, NOT UNIQUE, NOT NULL,
   'Date' Date, NOT UNIQUE, NOT NULL,
   PRIMARY KEY (`FillID`),
-  FOREIGN KEY (`TradeID`) REFERENCES `Trades` (`TradeID`),
-  FOREIGN KEY (`SecuritySymbol`) REFERENCES `Securities` (`SecuritySymbol`)
+  CONSTRAINT 'TradesTradeID' FOREIGN KEY (`TradeID`) REFERENCES `Trades` (`TradeID`),
+  CONSTRAINT 'TradesSecuritySymbol' FOREIGN KEY (`SecuritySymbol`) REFERENCES `Securities` (`SecuritySymbol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
