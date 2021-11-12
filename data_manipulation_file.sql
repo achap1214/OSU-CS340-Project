@@ -13,7 +13,7 @@ UPDATE `Traders`
 SET `TraderID` = :traderIDInput, `TraderFirstName` = :traderFnameInput, `TraderLastName` = :traderLnameInput
 WHERE `TraderID` = :traderIDselected;
 
---Query for gettting all trader names
+--Query for getting all trader names
 SELECT * FROM `Traders`;
 
 /*Managers*/
@@ -29,7 +29,7 @@ UPDATE `Managers`
 SET `ManagerID` = :managerIDInput, `ManagerFirstName` = :managerFnameInput, `ManagerLastName` = :managerLnameInput
 WHERE `ManagerID` = :managerIDselected;
 
---Query for gettting all trader names
+--Query for getting all trader names
 SELECT * FROM `Managers`;
 
 
@@ -46,5 +46,5 @@ UPDATE `Brokers`
 SET `BrokerID` = :brokerIDInput, `BrokerName` = :brokerNameInput, `BrokerAddress` = :brokerAddressInput
 WHERE `BrokerID` = :brokerIDselected;
 
---Query for gettting all trader names
+--Query for getting all trader names
 SELECT * FROM `Brokers`;
