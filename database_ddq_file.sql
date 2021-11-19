@@ -75,7 +75,10 @@ DROP TABLE IF EXISTS `Brokers`;
 CREATE TABLE `Brokers` (
   `BrokerID` int(11) UNIQUE NOT NULL,
   `BrokerName` varchar(255) UNIQUE NOT NULL,
-  `BrokerAddress` varchar(255) NOT NULL,
+  `BrokerStreetAddress` varchar(255) NOT NULL,
+  `BrokerCity` varchar(255) NOT NULL,
+  `BrokerState` varchar(255) NOT NULL,
+  `BrokerZipCode` int(11) NOT NULL,
   PRIMARY KEY (`BrokerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -86,7 +89,7 @@ CREATE TABLE `Brokers` (
 
 LOCK TABLES `Brokers` WRITE;
 /*!40000 ALTER TABLE `Brokers` DISABLE KEYS */;
-INSERT INTO `Brokers` VALUES (1,'Goldman Sachs','NYC'),(2,'JP Morgan','NYC'),(3,'Morgan Stanley','NYC');
+INSERT INTO `Brokers` VALUES (1,'Goldman Sachs','200 West Street','New York City','NY','10282'),(2,'JP Morgan','1 Beacon Street','Boston','MA','02108'),(3,'Morgan Stanley','1585 Broadway','New York City','NY','10019');
 /*!40000 ALTER TABLE `Brokers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,9 +101,10 @@ DROP TABLE IF EXISTS `Securities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Securities` (
+  `SecurityID` int(11) UNIQUE NOT NULL,
   `SecuritySymbol` varchar(255) UNIQUE NOT NULL,
   `CompanyName` varchar(255) UNIQUE NOT NULL,
-  PRIMARY KEY (`SecuritySymbol`)
+  PRIMARY KEY (`SecurityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -110,7 +114,7 @@ CREATE TABLE `Securities` (
 
 LOCK TABLES `Securities` WRITE;
 /*!40000 ALTER TABLE `Securities` DISABLE KEYS */;
-INSERT INTO `Securities` VALUES ('AAPL','Apple'),('AMZN','Amazon'),('MSFT','Microsoft');
+INSERT INTO `Securities` VALUES ('1','AAPL','Apple'),('2','AMZN','Amazon'),('3','MSFT','Microsoft');
 /*!40000 ALTER TABLE `Securities` ENABLE KEYS */;
 UNLOCK TABLES;
 
