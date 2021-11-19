@@ -64,29 +64,23 @@
                 <th>Broker Address</th>
             </tr>
         </thead>
+            
             <tr>
                 <th><input type="text" id="brokerIdInput" onkeyup="brokerIdSearch()" placeholder="Search for broker ID..." title="Type in a broker ID"></th>
                 <th><input type="text" id="brokerNameInput" onkeyup="brokerNameSearch()" placeholder="Search for broker name..." title="Type in a broker first name"></th>
                 <th><input type="text" id="brokerAddressInput" onkeyup="brokerAddressSearch()" placeholder="Search for broker address..." title="Type in a broker last name"></th>
             </tr>
+            {{#each Broker}}
             <tr>
-                <td>11</td>
-                <td>Goldman Sachs</td>
-                <td>NYC</td>
+                <td>{{BrokerID}}</td>
+                <td>{{BrokerName}}</td>
+                <td>{{BrokerAddress}}</td>
                 <td>
                     <button class="btn btn-warning">Edit</button>
                     <button class="btn btn-danger">Delete</button>
                 </td>
             </tr>
-            <tr>
-                <td>12</td>
-                <td>JP Morgan</td>
-                <td>NYC</td>
-                <td>
-                    <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+            {{/each}}
         </table>
     </div>
     <div id="form">
