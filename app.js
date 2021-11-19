@@ -4,10 +4,11 @@
     SETUP
 */
 const express = require('express');   // We are using the express library for the web server
-const app     = express();            // We need to instantiate an express object to interact with the server in our code
-var path = require('path');
+const app = express();            // We need to instantiate an express object to interact with the server in our code
+var mysql = require('./database/db-connector.js')
 
-app.set('PORT', 5757);
+// app.set('PORT', 5757);
+var PORT = '5757';
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -15,6 +16,16 @@ app.use(express.urlencoded({
 }));
 
 const db = require('./database/db-connector.js')
+
+app.use('/static', express.static('public'));
+app.set('mysql', mysql);
+app.use('/traders', require('./traders.js'));
+app.use('/managers', require('./managers.js'));
+app.use('/brokers', require('./brokers.js'));
+app.use('/securities', require('./securities.js'));
+app.use('/trades', require('./trades.js'));
+app.use('/fills', require('./fills.js'));
+app.use('/', express.static('public'));
 
 // Title: index.js
 // Date: 11/19/2021
@@ -339,8 +350,12 @@ app.use(function(err, req, res, next){
 /*npm
     LISTENER
 */
-app.listen(app.get('PORT'), function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
-    console.log('Express started on http://localhost:' + app.get('PORT') + '; press Ctrl-C to terminate.')
+// app.listen(app.get('PORT'), function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
+//     console.log('Express started on http://localhost:' + app.get('PORT') + '; press Ctrl-C to terminate.')
+// });
+
+app.listen(PORT), function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
+  console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });
 
 // test comment for git commit
