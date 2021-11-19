@@ -1,3 +1,9 @@
+// Title: addcustomer
+// Date: 11/19/2021
+// Adapted from Conor Hollenbach's project code for CS340
+// Author: Connor Hollenbach
+
+
 addSecurity()
 
 function addSecurity(){

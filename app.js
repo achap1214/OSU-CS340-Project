@@ -16,6 +16,11 @@ app.use(express.urlencoded({
 
 const db = require('./database/db-connector.js')
 
+// Title: index.js
+// Date: 11/19/2021
+// Adapted from Conor Hollenbach's project code for CS340
+// Author: Connor Hollenbach
+
 // SQL Queries for displaying tables
 const displayTraders = 'SELECT TraderID, TraderFirstName, TraderLastName FROM Traders ORDER BY TraderID';
 const displayManagers = 'SELECT ManagerID, ManagerFirstName, ManagerLastName FROM Managers ORDER BY ManagerID';
