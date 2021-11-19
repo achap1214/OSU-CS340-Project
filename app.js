@@ -3,23 +3,21 @@
 /*
     SETUP
 */
-const express = require('express');   // We are using the express library for the web server
-const app = express();            // We need to instantiate an express object to interact with the server in our code
+var express = require('express');   // We are using the express library for the web server
+var app = express();            // We need to instantiate an express object to interact with the server in our code
 
 // app.set('PORT', 5757);
 var PORT = 5757;
+
+var db = require('./database/db-connector.js')
 
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
 
-const db = require('./database/db-connector.js')
-
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
 app.use('/', express.static('public'));
-app.set('mysql', mysql);
+app.set('db', db);
 app.use('/traders', require('./traders.js'));
 app.use('/managers', require('./managers.js'));
 app.use('/brokers', require('./brokers.js'));
