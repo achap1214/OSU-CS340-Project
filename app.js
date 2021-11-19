@@ -5,10 +5,9 @@
 */
 const express = require('express');   // We are using the express library for the web server
 const app = express();            // We need to instantiate an express object to interact with the server in our code
-var mysql = require('./database/db-connector.js')
 
 // app.set('PORT', 5757);
-var PORT = '5757';
+var PORT = 5757;
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -17,7 +16,9 @@ app.use(express.urlencoded({
 
 const db = require('./database/db-connector.js')
 
-app.use('/static', express.static('public'));
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+app.use('/', express.static('public'));
 app.set('mysql', mysql);
 app.use('/traders', require('./traders.js'));
 app.use('/managers', require('./managers.js'));
@@ -73,8 +74,8 @@ const deleteFill = 'DELETE FROM Fills WHERE FillID = ?;'
 //     });                                         // requesting the web site.
 
 // Home Page
-app.get('/', function(req, res, next){
-    res.render('home');
+app.get('/', function(req, res){
+    res.render('index');
 });
 
 // Traders Page
@@ -356,7 +357,4 @@ app.use(function(err, req, res, next){
 
 app.listen(PORT), function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
   console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
-});
-
-// test comment for git commit
-// Albert comment 
+};
