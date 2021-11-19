@@ -61,20 +61,30 @@
             <tr>
                 <th>Broker ID</th>
                 <th>Broker Name</th>
-                <th>Broker Address</th>
+                <th>Broker Street Address</th>
+                <th>Broker City</th>
+                <th>Broker State</th>
+                <th>Broker Zip Code</th>
             </tr>
         </thead>
             
             <tr>
                 <th><input type="text" id="brokerIdInput" onkeyup="brokerIdSearch()" placeholder="Search for broker ID..." title="Type in a broker ID"></th>
-                <th><input type="text" id="brokerNameInput" onkeyup="brokerNameSearch()" placeholder="Search for broker name..." title="Type in a broker first name"></th>
-                <th><input type="text" id="brokerAddressInput" onkeyup="brokerAddressSearch()" placeholder="Search for broker address..." title="Type in a broker last name"></th>
+                <th><input type="text" id="brokerNameInput" onkeyup="brokerNameSearch()" placeholder="Search for broker name..." title="Type in a broker name"></th>
+                <th><input type="text" id="brokerStreetAddressInput" onkeyup="brokerStreetAddressSearch()" placeholder="Search for broker street address..." title="Type in a broker street address"></th>
+
+                <th><input type="text" id="brokerCityInput" onkeyup="brokerCitySearch()" placeholder="Search for broker city..." title="Type in a broker city"></th>
+                <th><input type="text" id="brokerStateInput" onkeyup="brokerStateSearch()" placeholder="Search for broker state..." title="Type in a broker state"></th>
+                <th><input type="text" id="brokerZipCodeInput" onkeyup="brokerZipCodeSearch()" placeholder="Search for broker zip code..." title="Type in a broker zip code"></th>
             </tr>
             {{#each Broker}}
             <tr>
                 <td>{{BrokerID}}</td>
                 <td>{{BrokerName}}</td>
-                <td>{{BrokerAddress}}</td>
+                <td>{{BrokerStreetAddress}}</td>
+                <td>{{BrokerCity}}</td>
+                <td>{{BrokerState}}</td>
+                <td>{{BrokerZipCode}}</td>
                 <td>
                     <button class="btn btn-warning">Edit</button>
                     <button class="btn btn-danger">Delete</button>
@@ -96,8 +106,20 @@
                 <input type="brokerName" class="form-control" id="brokerName" placeholder="Enter Broker Name">
               </div>
               <div class="mb-3">
-                <label for="pwd">Broker Address</label>
-                <input type="brokerAddress" class="form-control" id="brokerAddress" placeholder="Enter Broker Address">
+                <label for="pwd">Broker Street Address</label>
+                <input type="brokerStreetAddress" class="form-control" id="brokerStreetAddress" placeholder="Enter Broker Street Address">
+              </div>
+              <div class="mb-3">
+                <label for="pwd">Broker City</label>
+                <input type="brokerCity" class="form-control" id="brokerCity" placeholder="Enter Broker City">
+              </div>
+              <div class="mb-3">
+                <label for="pwd">Broker State</label>
+                <input type="brokerState" class="form-control" id="brokerState" placeholder="Enter Broker State">
+              </div>
+              <div class="mb-3">
+                <label for="pwd">Broker Zip Code</label>
+                <input type="brokerZipCode" class="form-control" id="brokerZipCode" placeholder="Enter Broker Zip Code">
               </div>
               <input type="button" class="add-row" value="Add Row">
             </form>
@@ -111,9 +133,12 @@
         $(document).ready(function(){
             $(".add-row").click(function(){
                 var brokerID = $("#brokerID").val();
-                var brokerFirstName = $("#firstName").val();
-                var brokerLastName = $("#lastName").val();
-                var markup = "<tr><td>" + brokerID + "</td><td>" + brokerFirstName + "</td><td>" + brokerLastName + "</td></tr>";
+                var brokerName = $("#name").val();
+                var brokerStreetAddress = $("#streetAddress").val();
+                var brokerCity = $("#city").val();
+                var brokerState = $("#state").val();
+                var brokerZipCode = $("#zipCode").val();
+                var markup = "<tr><td>" + brokerID + "</td><td>" + brokerName + "</td><td>" + brokerStreetAddress + "</td><td>" + brokerCity + "</td><td>" + brokerState + "</td><td>" + brokerZipCode + "</td></tr>";
                 $("table tbody").append(markup);
             });
             

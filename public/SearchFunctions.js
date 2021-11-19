@@ -108,10 +108,76 @@ function traderIdSearch() {
     }
   }
 
-  function brokerAddressSearch() {
+  function brokerStreetAddressSearch() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("brokerAddressInput");
+    input = document.getElementById("brokerStreetAddressInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("brokersTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function brokerCitySearch() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("brokerCityInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("brokersTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function brokerStateSearch() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("brokerStateInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("brokersTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function brokerZipCodeSearch() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("brokerZipCodeInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("brokersTable");
     tr = table.getElementsByTagName("tr");
