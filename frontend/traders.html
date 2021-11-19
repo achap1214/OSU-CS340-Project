@@ -65,24 +65,17 @@
                             <input type="text" id="traderLastNameInput" onkeyup="traderLastNameSearch()" placeholder="Search for trader last name..." title="Type in a trader last name">
                         </th>
                     </tr>
+                    {{#each Trader}}
                     <tr>
-                        <td>4</td>
-                        <td>James</td>
-                        <td>McAvoy</td>
+                        <td>{{TraderID}}</td>
+                        <td>{{TraderFirstName}}</td>
+                        <td>{{TraderLastName}}</td>
                         <td>
                             <button class="btn btn-warning">Edit</button>
                             <button class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Michael</td>
-                        <td>Fassbender</td>
-                        <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>

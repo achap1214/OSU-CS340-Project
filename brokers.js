@@ -1,40 +1,34 @@
-module.exports = function(){
-    const express = require('express');
-    const router = express.Router();
+addBroker()
 
-    function getBrokers(res, mysql, context, complete){
-        mysql.pool.query("SELECT BrokerID as BrokerID, BrokerName, BrokerStreetAddress, BrokerCity, BrokerState, BrokerZipCode FROM Brokers", function(error, results, fields){
-            if (error){
-                res.write(JSON.stringify(error));
-                res.end();
+function addBroker(){
+    document.getElementById("add-broker-btn").addEventListener("click", function(event){
+        event.preventDefault()
+        let bname = document.querySelector('#bName-input');
+        let bstreetaddress = document.querySelector('#bstreetaddress-input');
+        let bcity = document.querySelector('#bcity-input');
+        let bstate = document.querySelector('#bstate-input');
+        let bzipcode = document.querySelector('#bzipcode-input');
+
+        let req = new XMLHttpRequest();
+        let data = {};
+
+        data.BrokerName = bname.value;
+        data.BrokerStreetAddress = bstreetaddress.value;
+        data.BrokerCity = bcity.value;
+        data.BrokerState = bstate.value;
+        data.BrokerZipCode = bzipcode.value;
+        // console.log(data)
+
+        req.open("POST", '/insert-broker', true);
+        req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        req.addEventListener('load', () => {
+            if(req.status >= 200 && req.status < 400){
+                window.location.reload(true);
+            } else{
+                alert("Error - Please double check input fields");
             }
-            context.Brokers = results;
-            complete()
         })
-    }
-
-    // function getBrokerAddress()
-
-
-    router.get('/', function(req, res){
-        var callbackCount = 0;
-        var context = {};
-        context.jsscripts = ["deleteBrokers.js","filterBrokers.js","SearchFunctions.js"];
-        var mysql = req.app.get('mysql');
-        getBrokers(res, mysql, context, complete);
-        // getPlanets(res, mysql, context, complete);
-        function complete(){
-            callbackCount++;
-            if(callbackCount >= 2){
-                res.render('people', context);
-            }
-
-        }
-    });
-
-    
-
-
-
-
+        // console.log(req);
+        req.send(JSON.stringify(data));
+    })
 }

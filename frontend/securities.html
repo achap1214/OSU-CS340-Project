@@ -48,39 +48,28 @@
             <table id="securitiesTable"class=" table table-bordered">
                 <thead>
                         <tr>
+                            <th>Security ID</th>
                             <th>Security Symbol</th>
                             <th>Company Name</th>
                         </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <th><input type="text" id="securityIDInput" onkeyup="securityIDSearch()" placeholder="Search for security ID..." title="Type in a security ID"></th>
                         <th><input type="text" id="securitySymbolInput" onkeyup="securitySymbolSearch()" placeholder="Search for security symbol..." title="Type in a security symbol"></th>
                         <th><input type="text" id="companyNameInput" onkeyup="companyNameSearch()" placeholder="Search for company name..." title="Type in a company name"></th>
                     </tr>
+                    {{#each Security}}
                     <tr>
-                        <td>AAPL</td>
-                        <td>Apple</td>
+                        <td>{{SecurityID}}</td>
+                        <td>{{SecuritySymbol}}</td>
+                        <td>{{CompanyName}}</td>
                         <td>
                             <button class="btn btn-warning">Edit</button>
                             <button class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>AMZN</td>
-                        <td>Amazon</td>
-                        <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MSFT</td>
-                        <td>Microsoft</td>
-                        <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>
@@ -94,8 +83,12 @@
             <input type="securityID" class="form-control" id="securityID" placeholder="Enter Security ID">
           </div>
           <div class="mb-3">
+            <label for="pwd">Security Symbol</label>
+            <input type="securitySymbol" class="form-control" id="securitySymbol" placeholder="Enter Security Symbol">
+          </div>
+          <div class="mb-3">
             <label for="pwd">Company Name</label>
-            <input type="companyName" class="form-control" id="companyName" placeholder="Enter Trader Company Name">
+            <input type="companyName" class="form-control" id="companyName" placeholder="Enter Company Name">
           </div>
           <input type="button" class="add-row" value="Add Row">
         </form>
@@ -108,10 +101,10 @@
     <script>
         $(document).ready(function(){
             $(".add-row").click(function(){
-                var traderID = $("#traderID").val();
-                var traderFirstName = $("#firstName").val();
-                var traderLastName = $("#lastName").val();
-                var markup = "<tr><td>" + traderID + "</td><td>" + traderFirstName + "</td><td>" + traderLastName + "</td></tr>";
+                var securityID = $("#securityID").val();
+                var securitySymbol = $("#securitySymbol").val();
+                var companyName = $("#companyName").val();
+                var markup = "<tr><td>" + securityID + "</td><td>" + securitySymbol + "</td><td>" + companyName + "</td></tr>";
                 $("table tbody").append(markup);
             });
             

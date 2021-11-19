@@ -52,29 +52,24 @@
                     <th>Manager Last Name</th>
                 </tr>
             </thead>
+            <tbody>
                 <tr>
                     <th><input type="text" id="managerIdInput" onkeyup="managerIdSearch()" placeholder="Search for Manager ID..." title="Type in a Manager ID"></th>
                     <th><input type="text" id="managerFirstNameInput" onkeyup="managerFirstNameSearch()" placeholder="Search for Manager first name..." title="Type in a Manager first name"></th>
                     <th><input type="text" id="managerLastNameInput" onkeyup="managerLastNameSearch()" placeholder="Search for Manager last name..." title="Type in a Manager last name"></th>
                 </tr>
+                {{#each Manager}}
                 <tr>
-                    <td>7</td>
-                    <td>Michael</td>
-                    <td>Scott</td>
+                    <td>{{ManagerID}}</td>
+                    <td>{{ManagerFirstName}}</td>
+                    <td>{{ManagerLastName}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Steve</td>
-                    <td>Carrell</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
+            </tbody>
             </table>
         </div>
         <div id="form">

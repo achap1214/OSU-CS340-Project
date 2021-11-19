@@ -58,42 +58,20 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each Fill}}
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>AAPL</td>
-                    <td>100</td>
-                    <td>9:30:05</td>
-                    <td>12/21/12</td>
+                    <td>{{FillID}}</td>
+                    <td>{{TradeID}}</td>
+                    <td>{{SecuritySymbol}}</td>
+                    <td>{{Amount}}</td>
+                    <td>{{Time}}</td>
+                    <td>{{Date}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>AAPL</td>
-                    <td>100</td>
-                    <td>9:30:07</td>
-                    <td>12/21/12</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>AAPL</td>
-                    <td>100</td>
-                    <td>9:30:10</td>
-                    <td>12/21/12</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

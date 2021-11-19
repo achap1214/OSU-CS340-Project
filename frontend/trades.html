@@ -58,48 +58,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>AAPL</td>
-                        <td>300</td>
-                        <td>4</td>
-                        <td>7</td>
-                        <td>11</td>
-                        <td>9:30</td>
-                        <td>12/21/12</td>
-                        <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>AMZN</td>
-                        <td>200</td>
-                        <td>4</td>
-                        <td>9</td>
-                        <td>11</td>
-                        <td>9:35</td>
-                        <td>12/21/12</td>
-                        <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>MSFT</td>
-                        <td>500</td>
-                        <td>6</td>
-                        <td>9</td>
-                        <td>12</td>
-                        <td>9:45</td>
-                        <td>12/21/12</td>
-                        <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                  {{#each Trade}}
+                  <tr>
+                      <td>{{TradeID}}</td>
+                      <td>{{SecuritySymbol}</td>
+                      <td>{{Amount}}</td>
+                      <td>{{TraderID}}</td>
+                      <td>{{ManagerID}</td>
+                      <td>{{BrokerID}}</td>
+                      <td>{{Time}}</td>
+                      <td>{{Date}}</td>
+                      <td>
+                          <button class="btn btn-warning">Edit</button>
+                          <button class="btn btn-danger">Delete</button>
+                      </td>
+                  </tr>
+                  {{/each}}
                 </tbody>
             </table>
         </div>

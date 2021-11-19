@@ -20,7 +20,7 @@ const db = require('./database/db-connector.js')
 const displayTraders = 'SELECT TraderID, TraderFirstName, TraderLastName FROM Traders ORDER BY TraderID';
 const displayManagers = 'SELECT ManagerID, ManagerFirstName, ManagerLastName FROM Managers ORDER BY ManagerID';
 const displayBrokers = 'SELECT BrokerID, BrokerName, BrokerStreetAddress, BrokerCity, BrokerState, BrokerZipCode FROM Brokers ORDER BY BrokerID';
-const displaySecurities = 'SELECT SecuritySymbol, CompanyName FROM Securities ORDER BY SecuritySymbol';
+const displaySecurities = 'SELECT SecurityID, SecuritySymbol, CompanyName FROM Securities ORDER BY SecuritySymbol';
 const displayTrades = 'SELECT TradeID, SecuritySymbol, Amount, TraderID, ManagerID, BrokerID, Time, Date FROM Trades ORDER BY TradeID';
 const displayFills = 'SELECT FillID, TradeID, SecuritySymbol, Amount, Time, Date FROM Fills ORDER BY FillID';
 
@@ -29,8 +29,8 @@ const insertTrader = 'INSERT INTO Traders(TraderFirstName, TraderLastName) VALUE
 const insertManager = 'INSERT INTO Managers(ManagerFirstName, ManagerLastName) VALUES(?, ?, ?);'
 const insertBroker = 'INSERT INTO Brokers(BrokerName, BrokerStreetAddress, BrokerCity, BrokerState, BrokerZipCode) VALUES(?, ?, ?, ?, ?);'
 const insertSecurity = 'INSERT INTO Securities(SecuritySymbol, CompanyName) VALUES(?, ?);'
-const insertTrade = 'INSERT INTO Trades(TradeID, SecuritySymbol, Amount, TraderID, ManagerID, BrokerID, Time, Date) VALUES(?, ?, ?, ?, ?, ?, ?, ?);'
-const insertFill = 'INSERT INTO Fills(FillID, TradeID, SecuritySymbol, Amount, Time, Date) VALUES(?, ?, ?, ?, ?, ?);'
+const insertTrade = 'INSERT INTO Trades(SecuritySymbol, Amount, TraderID, ManagerID, BrokerID, Time, Date) VALUES(?, ?, ?, ?, ?, ?, ?);'
+const insertFill = 'INSERT INTO Fills(TradeID, SecuritySymbol, Amount, Time, Date) VALUES(?, ?, ?, ?, ?);'
 
 // Queries for updating rows
 const updateTrader = 'UPDATE Traders SET TraderFirstName = ?, TraderLastName = ? WHERE TraderID = ?;'
@@ -44,7 +44,7 @@ const updateFill = 'UPDATE Fills SET TradeID = ?, SecuritySymbol = ?, Amount = ?
 const deleteTrader = 'DELETE FROM Traders WHERE TraderID = ?;'
 const deleteManager = 'DELETE FROM Managers WHERE ManagerID = ?;'
 const deleteBroker = 'DELETE FROM Brokers WHERE BrokerID = ?;'
-const deleteSecurity = 'DELETE FROM Securities WHERE SecuritySymbol = ?;'
+const deleteSecurity = 'DELETE FROM Securities WHERE SecurityID = ?;'
 const deleteTrade = 'DELETE FROM Trades WHERE TradeID = ?;'
 const deleteFill = 'DELETE FROM Fills WHERE FillID = ?;'
 
@@ -214,7 +214,7 @@ app.get('/brokers',function(req,res,next){
   })
   
   app.delete('/delete-security',function(req,res,next){
-    db.pool.query(deleteSecurity, [req.body.SecuritySymbol], function(err, result){
+    db.pool.query(deleteSecurity, [req.body.SecurityID], function(err, result){
       if(err){
         next(err);
         return;
