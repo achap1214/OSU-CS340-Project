@@ -3,7 +3,7 @@ module.exports = function(){
     const router = express.Router();
 
     function getBrokers(res, mysql, context, complete){
-        mysql.pool.query("SELECT BrokerID as BrokerID, BrokerName, BrokerAddress FROM Brokers", function(error, results, fields){
+        mysql.pool.query("SELECT BrokerID as BrokerID, BrokerName, BrokerStreetAddress, BrokerCity, BrokerState, BrokerZipCode FROM Brokers", function(error, results, fields){
             if (error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -14,11 +14,6 @@ module.exports = function(){
     }
 
     // function getBrokerAddress()
-
-
-
-
-
 
 
     router.get('/', function(req, res){
@@ -36,6 +31,8 @@ module.exports = function(){
 
         }
     });
+
+    
 
 
 
