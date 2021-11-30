@@ -104,21 +104,6 @@ app.post('/insert-trader', (req, res) =>{
     }
   });
 });
-  
-// app.get('/delete-trader', function (req,res) {
-//   let TraderID = req.query.TraderID;
-//   // Query to delete a flight by flight_id.
-//   let query = `DELETE FROM Traders WHERE TraderID = ${parseInt(TraderID)};`;
-
-//   db.pool.query(query, function (error, rows, fields) {
-//       if (error) {
-//           console.log(error);
-//           res.sendStatus(400);
-//       } else {
-//           res.redirect('/traders');
-//       }
-//   });
-// });
 
 app.get('/delete-trader',function(req,res,next){
   db.pool.query("DELETE FROM "+req.query.table+" WHERE TraderID=?", parseInt([req.query.id]), function(error, result){
