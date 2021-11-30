@@ -75,7 +75,6 @@
                       <td>{{this.Date}}</td>
                       <td>
                           <button class="btn btn-warning">Edit</button>
-                          <button class="btn btn-danger">Delete</button>
                       </td>
                   </tr>
                   {{/each}}
@@ -121,4 +120,14 @@
           <button type="submit" class="btn btn-primary">Add Trade</button>
         </form>
     </div>
+      <div class="container mt-3" id="form">
+          <h3>Delete Trade</h3>
+          <form id="delete-trade-form" method="DELETE" action="/delete-trade">
+              <div class="form-group">
+              <label for="TradeID">Trader ID</label>
+              <input name="TradeID" type="text" class="form-control" id="TradeID" placeholder="Enter Trade ID" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Delete Trade</button>
+          </form>
+      </div>
 </body>

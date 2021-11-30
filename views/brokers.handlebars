@@ -80,7 +80,6 @@
                 <td>{{this.BrokerZipCode}}</td>
                 <td>
                     <button class="btn btn-warning">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
                 </td>
             </tr>
             {{/each}}
@@ -116,6 +115,16 @@
                 <input name="BrokerZipCode" type="text" class="form-control" id="BrokerZipCode" placeholder="Enter Broker Zip Code">
               </div>
               <button type="submit" class="btn btn-primary">Add Broker</button>
+            </form>
+        </div>
+        <div class="container mt-3" id="form">
+            <h3>Delete Broker</h3>
+            <form id="delete-broker-form" method="DELETE" action="/delete-broker">
+                <div class="form-group">
+                <label for="BrokerID">Trader ID</label>
+                <input name="BrokerID" type="text" class="form-control" id="BrokerID" placeholder="Enter Broker ID" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Delete Broker</button>
             </form>
         </div>
     </div>

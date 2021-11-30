@@ -94,7 +94,8 @@ app.get('/traders',function(req,res){
 
 app.post('/insert-trader', (req, res, next) =>{
   let data = req.body;
-  let query = `INSERT INTO Traders(TradeID, TraderFirstName, TraderLastName) VALUES('${data.TradeID}', '${data.TraderFirstName}', '${data.TraderLastName}');`;
+  let query = `INSERT INTO Traders(TradeID, TraderFirstName, TraderLastName) 
+              VALUES('${parseInt(data.TradeID)}', '${data.TraderFirstName}', '${data.TraderLastName}');`;
   db.pool.query(query, function (error, rows, fields) {
     if (error) {
       console.log(error);
@@ -106,10 +107,10 @@ app.post('/insert-trader', (req, res, next) =>{
 });
   
 app.delete('/delete-trader',function(req,res,next){
-  let TraderID = req.query.TraderID;
-
+  let TraderID = req.query;
+  console.log(TraderID)
   // Query to delete a flight by flight_id.
-  let query = `DELETE FROM Traders WHERE TraderID = ${parseInt(TraderID)};`;
+  let query = `DELETE FROM Traders WHERE TraderID = ${TraderID};`;
 
   db.pool.query(query, function (error, rows, fields) {
       if (error) {

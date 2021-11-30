@@ -76,8 +76,7 @@
                         <td>{{this.TraderFirstName}}</td>
                         <td>{{this.TraderLastName}}</td>
                         <td>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-warning">Edit</button>
                         </td>
                     </tr>
                     {{/each}}
@@ -100,6 +99,16 @@
                     <input name="TraderLastName" type="text" class="form-control" id="TraderLastName" placeholder="Enter Trader Last Name" required>
                   </div>
                   <button type="submit" class="btn btn-primary">Add Trader</button>
+                </form>
+            </div>
+            <div class="container mt-3" id="form">
+                <h3>Delete Trader</h3>
+                <form id="delete-trader-form" method="DELETE" action="/delete-trader">
+                  <div class="form-group">
+                    <label for="TraderID">Trader ID</label>
+                    <input name="TraderID" type="text" class="form-control" id="TraderID" placeholder="Enter Trader ID" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Delete Trader</button>
                 </form>
             </div>
     </div>
