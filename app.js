@@ -91,17 +91,16 @@ app.get('/traders',function(req,res){
   });
 });
 
-app.post('/insert-trader', (req, res) =>{
-  let data = req.body;
-  let query = `INSERT INTO Traders(TradeID, TraderFirstName, TraderLastName) 
-              VALUES('${parseInt(data.TradeID)}', '${data.TraderFirstName}', '${data.TraderLastName}');`;
-  db.pool.query(query, function (error, rows, fields) {
+app.get('/insert-trader', (req, res) =>{
+  var values = [req.query.TraderID, req.query.TraderFirstName, req.query.TraderLastName];
+  let query = `INSERT INTO Traders(TraderID, TraderFirstName, TraderLastName) 
+              VALUES(?,?,?);`;
+  db.pool.query(query, values, function (error, rows, fields) {
     if (error) {
       console.log(error);
       res.sendStatus(400);
-    } else {
-        res.redirect('/traders');
     }
+    res.redirect('/traders');
   });
 });
 
@@ -141,13 +140,14 @@ app.get('/managers',function(req,res){
   });
 });
   
-app.post('/insert-manager', (req, res) =>{
-  db.pool.query(insertManager, [req.body.ManagerFirstName, req.body.ManagerLastName], (err, result) => {
-    if(err){
-      next(err);
-      return;
+app.get('/insert-manager', (req, res) =>{
+  var values = [req.query.ManagerID, req.query.ManagerFirstName, req.query.ManagerLastName];
+  db.pool.query("INSERT INTO Managers (ManagerID, ManagerFirstName, ManagerLastName) VALUES (?,?,?)", values, (error, result) => {
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
+    res.redirect('/managers');
   })
 })
 
@@ -178,14 +178,15 @@ app.get('/brokers',function(req,res){
     res.render('brokers', { data: rows});
   });
 });
-  
-app.post('/insert-broker', (req, res) =>{
-  db.pool.query(insertBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], (err, result) => {
-    if(err){
-      next(err);
-      return;
+
+app.get('/insert-broker', (req, res) =>{
+  var values = [req.query.BrokerID, req.query.BrokerName, req.query.BrokerStreetAddress, req.query.BrokerCity, req.query.BrokerState, req.query.BrokerZipCode];
+  db.pool.query("INSERT INTO Brokers (BrokerID, BrokerName, BrokerStreetAddress, BrokerCity, BrokerState, BrokerZipCode) VALUES (?,?,?,?,?,?)", values, (error, result) => {
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
+    res.redirect('/brokers');
   })
 })
 
@@ -227,6 +228,17 @@ app.post('/insert-security', (req, res) =>{
   })
 })
 
+app.get('/insert-security', (req, res) =>{
+  var values = [req.query.SecurityID, req.query.SecuritySymbol, req.query.CompanyName];
+  db.pool.query("INSERT INTO Securities (SecurityID, SecuritySymbol, CompanyName) VALUES (?,?,?)", values, (error, result) => {
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
+    }
+    res.redirect('/securities');
+  })
+})
+
 app.delete('/delete-security',function(req,res){
   db.pool.query(deleteSecurity, [req.body.SecurityID], function(err, result){
     if(err){
@@ -254,14 +266,15 @@ app.get('/trades',function(req,res){
     res.render('trades', { data: rows});
   });
 });
-  
-app.post('/insert-trade', (req, res) =>{
-  db.pool.query(insertTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], (err, result) => {
-    if(err){
-      next(err);
-      return;
+
+app.get('/insert-trade', (req, res) =>{
+  var values = [req.query.TradeID, req.query.SecuritySymbol, req.query.Amount, req.query.TraderID, req.query.ManagerID, req.query.BrokerID, req.query.Time, req.query.Date];
+  db.pool.query("INSERT INTO Brokers (TradeID, SecuritySymbol, Amount, TraderID, ManagerID, BrokerID, Time, Date) VALUES (?,?,?,?,?,?,?,?)", values, (error, result) => {
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
+    res.redirect('/trades');
   })
 })
 
@@ -300,6 +313,17 @@ app.post('/insert-fill', (req, res) =>{
       return;
     }
     res.send(result);
+  })
+})
+
+app.get('/insert-fill', (req, res) =>{
+  var values = [req.query.FillID, req.query.TradeID, req.query.SecuritySymbol, req.query.Amount, req.query.Time, req.query.Date];
+  db.pool.query("INSERT INTO Fills (FillID, TradeID, SecuritySymbol, Amount, Time, Date) VALUES (?,?,?,?,?,?)", values, (error, result) => {
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
+    }
+    res.redirect('/fills');
   })
 })
 
