@@ -75,7 +75,14 @@
                         <td scope="row">{{this.TraderID}}</td>
                         <td>{{this.TraderFirstName}}</td>
                         <td>{{this.TraderLastName}}</td>
-                        <td><a href="/delete-trader?TraderID={{this.TraderID}}">Delete</a></td>
+                        <td>
+                            <form action="/delete-trader">
+                                <button type="submit">Delete</button>
+                                <input type="hidden" name="table" value="Traders">
+                                <input type="hidden" name="page" value="traders">
+                                <input type="hidden" name="id" value={{this.TraderID}}>
+                            </form>
+                        </td>
                         <td>
                             <button type="submit" class="btn btn-warning">Edit</button>
                         </td>

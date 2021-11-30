@@ -25,7 +25,6 @@ app.engine('.handlebars', exphbs({
 app.set('view engine', '.handlebars');
 
 app.use('/', express.static('public'));
-// app.set('db', db);
 // app.use('/traders', require('./traders.js'));
 // app.use('/managers', require('./managers.js'));
 // app.use('/brokers', require('./brokers.js'));
@@ -106,19 +105,29 @@ app.post('/insert-trader', (req, res) =>{
   });
 });
   
-app.get('/delete-trader', function (req,res) {
-  let TraderID = req.query.TraderID;
-  // Query to delete a flight by flight_id.
-  let query = `DELETE FROM Traders WHERE TraderID = ${parseInt(TraderID)};`;
+// app.get('/delete-trader', function (req,res) {
+//   let TraderID = req.query.TraderID;
+//   // Query to delete a flight by flight_id.
+//   let query = `DELETE FROM Traders WHERE TraderID = ${parseInt(TraderID)};`;
 
-  db.pool.query(query, function (error, rows, fields) {
-      if (error) {
-          console.log(error);
-          res.sendStatus(400);
-      } else {
-          res.redirect('/traders');
-      }
-  });
+//   db.pool.query(query, function (error, rows, fields) {
+//       if (error) {
+//           console.log(error);
+//           res.sendStatus(400);
+//       } else {
+//           res.redirect('/traders');
+//       }
+//   });
+// });
+
+app.get('/delete-trader',function(req,res,next){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE TraderID=?", parseInt([req.query.id]), function(error, result){
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
+    }
+    res.redirect("/" + req.query.page);
+  })
 });
 
 app.put('/update-trader',function(req,res){
