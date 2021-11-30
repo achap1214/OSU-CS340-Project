@@ -114,22 +114,41 @@ app.get('/delete-trader',function(req,res,next){
   })
 });
 
-app.put('/update-trader',function(req,res){
-  let TraderID = req.query.TraderID;
-  let TraderFirstName = req.query.TraderFirstName;
-  let TraderLastName = req.query.TraderLastName;
+app.get('/update-trader',function(req,res){
+  // var values = [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID];
+  // let query = `UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?`
+  pool.query("UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?",
+  [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID],function(error, result){
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    }
+    res.redirect('/traders');
+  })
+  // db.pool.query(query,values, function(error, result){
+  //   if (error) {
+  //     console.log(error);
+  //     res.sendStatus(400);
+  //   }
+  //   res.redirect('/traders');
+  // });
 
-  // Query to get a Customer record
-  let query = `UPDATE Traders SET TraderID = ${parseInt(TraderID)}, TraderFirstName = ${TraderFirstName}, TraderLastName = ${TraderLastName} WHERE TraderID = ${TraderID};`;
 
-  db.pool.query(query, function (error, rows, fields) {
-      if (error) {
-          console.log(error);
-          res.sendStatus(400);
-      } else {
-          res.redirect('/traders');
-      }
-  });
+  // let TraderID = req.query.TraderID;
+  // let TraderFirstName = req.query.TraderFirstName;
+  // let TraderLastName = req.query.TraderLastName;
+
+  // // Query to get a Customer record
+  // let query = `UPDATE Traders SET TraderID = ${parseInt(TraderID)}, TraderFirstName = ${TraderFirstName}, TraderLastName = ${TraderLastName} WHERE TraderID = ${TraderID};`;
+
+  // db.pool.query(query, function (error, rows, fields) {
+  //     if (error) {
+  //         console.log(error);
+  //         res.sendStatus(400);
+  //     } else {
+  //         res.redirect('/traders');
+  //     }
+  // });
 });
 
 // Managers Page
