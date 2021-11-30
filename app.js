@@ -123,17 +123,12 @@ app.get('/traders',function(req,res){
   });
 
 // Managers Page
-app.get('/managers',function(req,res,next){
-    var context = {};
-    db.pool.query(displayManagers, function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-    context.managersResults = {rows: rows}
-    res.render('managers', context);
-    });
+app.get('/managers',function(req,res){
+  let query = "SELECT * FROM Managers;";
+  db.pool.query(query, function(err, rows, fields){
+    res.render('managers', { data: rows});
   });
+});
   
   app.post('/insert-manager', (req, res, next) =>{
     db.pool.query(insertManager, [req.body.ManagerFirstName, req.body.ManagerLastName], (err, result) => {
@@ -166,17 +161,12 @@ app.get('/managers',function(req,res,next){
   });
 
 // Brokers Page
-app.get('/brokers',function(req,res,next){
-    var context = {};
-    db.pool.query(displayBrokers, function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-    context.BrokersResults = {rows: rows}
-    res.render('brokers', context);
-    });
+app.get('/brokers',function(req,res){
+  let query = "SELECT * FROM Brokers;";
+  db.pool.query(query, function(err, rows, fields){
+    res.render('brokers', { data: rows});
   });
+});
   
   app.post('/insert-broker', (req, res, next) =>{
     db.pool.query(insertBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], (err, result) => {
@@ -209,17 +199,12 @@ app.get('/brokers',function(req,res,next){
   });
 
 // Securities Page
-  app.get('/securities',function(req,res,next){
-    var context = {};
-    db.pool.query(displaySecurities, function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-    context.SecuritiesResults = {rows: rows}
-    res.render('securities', context);
-    });
+app.get('/securities',function(req,res){
+  let query = "SELECT * FROM Securities;";
+  db.pool.query(query, function(err, rows, fields){
+    res.render('securities', { data: rows});
   });
+});
   
   app.post('/insert-security', (req, res, next) =>{
     db.pool.query(insertSecurity, [req.body.SecuritySymbol, req.body.CompanyName], (err, result) => {
@@ -252,17 +237,12 @@ app.get('/brokers',function(req,res,next){
   });
 
 // Trades Page
-app.get('/trades',function(req,res,next){
-    var context = {};
-    db.pool.query(displayTrades, function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-    context.TradesResults = {rows: rows}
-    res.render('trades', context);
-    });
+app.get('/trades',function(req,res){
+  let query = "SELECT * FROM Trades;";
+  db.pool.query(query, function(err, rows, fields){
+    res.render('trades', { data: rows});
   });
+});
   
   app.post('/insert-trade', (req, res, next) =>{
     db.pool.query(insertTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], (err, result) => {
@@ -295,17 +275,12 @@ app.get('/trades',function(req,res,next){
   });
 
 // Fills Page
-app.get('/fills',function(req,res,next){
-    var context = {};
-    db.pool.query(displayFills, function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-    context.FillsResults = {rows: rows}
-    res.render('fills', context);
-    });
+app.get('/fills',function(req,res){
+  let query = "SELECT * FROM Fills;";
+  db.pool.query(query, function(err, rows, fields){
+    res.render('fills', { data: rows});
   });
+});
   
   app.post('/insert-fill', (req, res, next) =>{
     db.pool.query(insertFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], (err, result) => {
