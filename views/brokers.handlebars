@@ -42,29 +42,22 @@
                 </li>
               </ul>
           </nav>
-
-    
-    <!-- <div id="home"><a href="index.html"><h1>Chap Corporation</h1></a></div> -->
-    
-    <!-- <div id="navbar">
-        <a href="traders.html" class="navbarbutton">Traders</a>
-        <a href="brokers.html" class="navbarbutton">Brokers</a>
-        <a href="managers.html" class="navbarbutton">Managers</a>
-        <a href="securities.html" class="navbarbutton">Securities</a>
-        <a href="fills.html" class="navbarbutton">Fills</a>
-        <a href="trades.html" class="navbarbutton">Trades</a>
-    </div> -->
     <div class="container mt-3">
         <div><a><h2>Brokers</h2></a></div>
         <table id="brokersTable" class="table table-bordered">
         <thead>
             <tr>
-                <th>Broker ID</th>
+                {{!-- <th>Broker ID</th>
                 <th>Broker Name</th>
                 <th>Broker Street Address</th>
                 <th>Broker City</th>
                 <th>Broker State</th>
-                <th>Broker Zip Code</th>
+                <th>Broker Zip Code</th> --}}
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
             </tr>
         </thead>
         <tbody>
@@ -77,14 +70,14 @@
                 <th><input type="text" id="brokerStateInput" onkeyup="brokerStateSearch()" placeholder="Search for broker state..." title="Type in a broker state"></th>
                 <th><input type="text" id="brokerZipCodeInput" onkeyup="brokerZipCodeSearch()" placeholder="Search for broker zip code..." title="Type in a broker zip code"></th>
             </tr>
-            {{#each Broker}}
+            {{#each data}}
             <tr>
-                <td>{{BrokerID}}</td>
-                <td>{{BrokerName}}</td>
-                <td>{{BrokerStreetAddress}}</td>
-                <td>{{BrokerCity}}</td>
-                <td>{{BrokerState}}</td>
-                <td>{{BrokerZipCode}}</td>
+                <td>{{this.BrokerID}}</td>
+                <td>{{this.BrokerName}}</td>
+                <td>{{this.BrokerStreetAddress}}</td>
+                <td>{{this.BrokerCity}}</td>
+                <td>{{this.BrokerState}}</td>
+                <td>{{this.BrokerZipCode}}</td>
                 <td>
                     <button class="btn btn-warning">Edit</button>
                     <button class="btn btn-danger">Delete</button>

@@ -47,27 +47,32 @@
             <table id="tradesTable"class=" table table-bordered">
                 <thead>
                     <tr>
-                        <th>Trade ID</th>
+                        {{!-- <th>Trade ID</th>
                         <th>Security Symbol</th>
                         <th>Amount</th>
                         <th>Trader ID</th>
                         <th>Manager ID</th>
                         <th>Broker ID</th>
                         <th>Time</th>
-                        <th>Date</th>
+                        <th>Date</th> --}}
+                        {{#each data.[0]}}
+                        <th>
+                            {{@key}}
+                        </th>
+                        {{/each}}
                     </tr>
                 </thead>
                 <tbody>
-                  {{#each Trade}}
+                  {{#each data}}
                   <tr>
-                      <td>{{TradeID}}</td>
-                      <td>{{SecuritySymbol}</td>
-                      <td>{{Amount}}</td>
-                      <td>{{TraderID}}</td>
-                      <td>{{ManagerID}</td>
-                      <td>{{BrokerID}}</td>
-                      <td>{{Time}}</td>
-                      <td>{{Date}}</td>
+                      <td>{{this.TradeID}}</td>
+                      <td>{{this.SecuritySymbol}</td>
+                      <td>{{this.Amount}}</td>
+                      <td>{{this.TraderID}}</td>
+                      <td>{{this.ManagerID}</td>
+                      <td>{{this.BrokerID}}</td>
+                      <td>{{this.Time}}</td>
+                      <td>{{this.Date}}</td>
                       <td>
                           <button class="btn btn-warning">Edit</button>
                           <button class="btn btn-danger">Delete</button>

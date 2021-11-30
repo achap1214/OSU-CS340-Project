@@ -48,9 +48,14 @@
             <table id="tradersTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Trader ID</th>
+                        {{!-- <th>Trader ID</th>
                         <th>Trader First Name</th>
-                        <th>Trader Last Name</th>
+                        <th>Trader Last Name</th> --}}
+                        {{#each data.[0]}}
+                        <th>
+                            {{@key}}
+                        </th>
+                        {{/each}}
                     </tr>
                 </thead>
                 <tbody>
@@ -65,11 +70,11 @@
                             <input type="text" id="traderLastNameInput" onkeyup="traderLastNameSearch()" placeholder="Search for trader last name..." title="Type in a trader last name">
                         </th>
                     </tr>
-                    {{#each Trader}}
+                    {{#each data}}
                     <tr>
-                        <td>{{TraderID}}</td>
-                        <td>{{TraderFirstName}}</td>
-                        <td>{{TraderLastName}}</td>
+                        <td>{{this.TraderID}}</td>
+                        <td>{{this.TraderFirstName}}</td>
+                        <td>{{this.TraderLastName}}</td>
                         <td>
                             <button class="btn btn-warning">Edit</button>
                             <button class="btn btn-danger">Delete</button>

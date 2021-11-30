@@ -85,18 +85,13 @@ app.get('/', function(req, res){
 });
 
 // Traders Page
-app.get('/traders',function(req,res,next){
-    var context = {};
-    db.pool.query(displayTraders, function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-    context.tradersResults = {rows: rows}
-    res.render('traders', context);
-    });
+app.get('/traders',function(req,res){
+  let query = "SELECT * FROM Traders;";
+  db.pool.query(query, function(err, rows, fields){
+    res.render('traders', { data: rows});
   });
-  
+});
+
   app.post('/insert-trader', (req, res, next) =>{
     db.pool.query(insertTrader, [req.body.TraderFirstName, req.body.TraderLastName], (err, result) => {
       if(err){

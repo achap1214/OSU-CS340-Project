@@ -48,9 +48,14 @@
             <table id="securitiesTable"class=" table table-bordered">
                 <thead>
                         <tr>
-                            <th>Security ID</th>
+                            {{!-- <th>Security ID</th>
                             <th>Security Symbol</th>
-                            <th>Company Name</th>
+                            <th>Company Name</th> --}}
+                            {{#each data.[0]}}
+                            <th>
+                                {{@key}}
+                            </th>
+                            {{/each}}
                         </tr>
                 </thead>
                 <tbody>
@@ -59,11 +64,11 @@
                         <th><input type="text" id="securitySymbolInput" onkeyup="securitySymbolSearch()" placeholder="Search for security symbol..." title="Type in a security symbol"></th>
                         <th><input type="text" id="companyNameInput" onkeyup="companyNameSearch()" placeholder="Search for company name..." title="Type in a company name"></th>
                     </tr>
-                    {{#each Security}}
+                    {{#each data}}
                     <tr>
-                        <td>{{SecurityID}}</td>
-                        <td>{{SecuritySymbol}}</td>
-                        <td>{{CompanyName}}</td>
+                        <td>{{this.SecurityID}}</td>
+                        <td>{{this.SecuritySymbol}}</td>
+                        <td>{{this.CompanyName}}</td>
                         <td>
                             <button class="btn btn-warning">Edit</button>
                             <button class="btn btn-danger">Delete</button>

@@ -49,23 +49,28 @@
         <table id="tradersTable" class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Fill ID</th>
+                    {{!-- <th>Fill ID</th>
                     <th>Trade ID</th>
                     <th>Security Symbol</th>
                     <th>Amount</th>
                     <th>Time</th>
-                    <th>Date</th>
+                    <th>Date</th> --}}
+                    {{#each data.[0]}}
+                    <th>
+                        {{@key}}
+                    </th>
+                    {{/each}}
                 </tr>
             </thead>
             <tbody>
-                {{#each Fill}}
+                {{#each data}}
                 <tr>
-                    <td>{{FillID}}</td>
-                    <td>{{TradeID}}</td>
-                    <td>{{SecuritySymbol}}</td>
-                    <td>{{Amount}}</td>
-                    <td>{{Time}}</td>
-                    <td>{{Date}}</td>
+                    <td>{{this.FillID}}</td>
+                    <td>{{this.TradeID}}</td>
+                    <td>{{this.SecuritySymbol}}</td>
+                    <td>{{this.Amount}}</td>
+                    <td>{{this.Time}}</td>
+                    <td>{{this.Date}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>

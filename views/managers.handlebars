@@ -47,9 +47,14 @@
             <table id="managersTable" class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Manager ID</th>
+                    {{!-- <th>Manager ID</th>
                     <th>Manager First Name</th>
-                    <th>Manager Last Name</th>
+                    <th>Manager Last Name</th> --}}
+                    {{#each data.[0]}}
+                    <th>
+                        {{@key}}
+                    </th>
+                    {{/each}}
                 </tr>
             </thead>
             <tbody>
@@ -58,11 +63,11 @@
                     <th><input type="text" id="managerFirstNameInput" onkeyup="managerFirstNameSearch()" placeholder="Search for Manager first name..." title="Type in a Manager first name"></th>
                     <th><input type="text" id="managerLastNameInput" onkeyup="managerLastNameSearch()" placeholder="Search for Manager last name..." title="Type in a Manager last name"></th>
                 </tr>
-                {{#each Manager}}
+                {{#each data}}
                 <tr>
-                    <td>{{ManagerID}}</td>
-                    <td>{{ManagerFirstName}}</td>
-                    <td>{{ManagerLastName}}</td>
+                    <td>{{this.ManagerID}}</td>
+                    <td>{{this.ManagerFirstName}}</td>
+                    <td>{{this.ManagerLastName}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
