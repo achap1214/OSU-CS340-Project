@@ -72,9 +72,10 @@
                     </tr>
                     {{#each data}}
                     <tr>
-                        <td>{{this.TraderID}}</td>
+                        <td scope="row">{{this.TraderID}}</td>
                         <td>{{this.TraderFirstName}}</td>
                         <td>{{this.TraderLastName}}</td>
+                        <td><a href="/delete-trader?TraderID={{this.TraderID}}">Delete</a></td>
                         <td>
                             <button type="submit" class="btn btn-warning">Edit</button>
                         </td>
@@ -103,7 +104,7 @@
             </div>
             <div class="container mt-3" id="form">
                 <h3>Delete Trader</h3>
-                <form id="delete-trader-form" method="DELETE" action="/delete-trader">
+                <form id="delete-trader-form" method="GET" action="/delete-trader">
                   <div class="form-group">
                     <label for="TraderID">Trader ID</label>
                     <input name="TraderID" type="text" class="form-control" id="TraderID" placeholder="Enter Trader ID" required>

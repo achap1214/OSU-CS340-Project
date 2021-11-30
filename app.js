@@ -92,7 +92,7 @@ app.get('/traders',function(req,res){
   });
 });
 
-app.post('/insert-trader', (req, res, next) =>{
+app.post('/insert-trader', (req, res) =>{
   let data = req.body;
   let query = `INSERT INTO Traders(TradeID, TraderFirstName, TraderLastName) 
               VALUES('${parseInt(data.TradeID)}', '${data.TraderFirstName}', '${data.TraderLastName}');`;
@@ -106,11 +106,10 @@ app.post('/insert-trader', (req, res, next) =>{
   });
 });
   
-app.delete('/delete-trader',function(req,res,next){
-  let TraderID = req.query;
-  console.log(TraderID)
+app.get('/delete-trader', function (req,res) {
+  let TraderID = req.query.TraderID;
   // Query to delete a flight by flight_id.
-  let query = `DELETE FROM Traders WHERE TraderID = ${TraderID};`;
+  let query = `DELETE FROM Traders WHERE TraderID = ${parseInt(TraderID)};`;
 
   db.pool.query(query, function (error, rows, fields) {
       if (error) {
@@ -122,7 +121,7 @@ app.delete('/delete-trader',function(req,res,next){
   });
 });
 
-app.put('/update-trader',function(req,res,next){
+app.put('/update-trader',function(req,res){
   let TraderID = req.query.TraderID;
   let TraderFirstName = req.query.TraderFirstName;
   let TraderLastName = req.query.TraderLastName;
@@ -148,7 +147,7 @@ app.get('/managers',function(req,res){
   });
 });
   
-app.post('/insert-manager', (req, res, next) =>{
+app.post('/insert-manager', (req, res) =>{
   db.pool.query(insertManager, [req.body.ManagerFirstName, req.body.ManagerLastName], (err, result) => {
     if(err){
       next(err);
@@ -158,7 +157,7 @@ app.post('/insert-manager', (req, res, next) =>{
   })
 })
 
-app.delete('/delete-manager',function(req,res,next){
+app.delete('/delete-manager',function(req,res){
   db.pool.query(deleteManager, [req.body.ManagerID], function(err, result){
     if(err){
       next(err);
@@ -168,7 +167,7 @@ app.delete('/delete-manager',function(req,res,next){
   });
 });
 
-app.put('/update-manager',function(req,res,next){
+app.put('/update-manager',function(req,res){
   db.pool.query(updateManager, [req.body.ManagerFirstName, req.body.ManagerLastName], function(err, result){
     if(err){
       next(err);
@@ -186,7 +185,7 @@ app.get('/brokers',function(req,res){
   });
 });
   
-app.post('/insert-broker', (req, res, next) =>{
+app.post('/insert-broker', (req, res) =>{
   db.pool.query(insertBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], (err, result) => {
     if(err){
       next(err);
@@ -196,7 +195,7 @@ app.post('/insert-broker', (req, res, next) =>{
   })
 })
 
-app.delete('/delete-broker',function(req,res,next){
+app.delete('/delete-broker',function(req,res){
   db.pool.query(deleteBroker, [req.body.BrokerID], function(err, result){
     if(err){
       next(err);
@@ -206,7 +205,7 @@ app.delete('/delete-broker',function(req,res,next){
   });
 });
 
-app.put('/update-broker',function(req,res,next){
+app.put('/update-broker',function(req,res){
   db.pool.query(updateBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], function(err, result){
     if(err){
       next(err);
@@ -224,7 +223,7 @@ app.get('/securities',function(req,res){
   });
 });
   
-app.post('/insert-security', (req, res, next) =>{
+app.post('/insert-security', (req, res) =>{
   db.pool.query(insertSecurity, [req.body.SecuritySymbol, req.body.CompanyName], (err, result) => {
     if(err){
       next(err);
@@ -234,7 +233,7 @@ app.post('/insert-security', (req, res, next) =>{
   })
 })
 
-app.delete('/delete-security',function(req,res,next){
+app.delete('/delete-security',function(req,res){
   db.pool.query(deleteSecurity, [req.body.SecurityID], function(err, result){
     if(err){
       next(err);
@@ -244,7 +243,7 @@ app.delete('/delete-security',function(req,res,next){
   });
 });
 
-app.put('/update-security',function(req,res,next){
+app.put('/update-security',function(req,res){
   db.pool.query(updateSecurity, [req.body.SecuritySymbol, req.body.CompanyName], function(err, result){
     if(err){
       next(err);
@@ -262,7 +261,7 @@ app.get('/trades',function(req,res){
   });
 });
   
-app.post('/insert-trade', (req, res, next) =>{
+app.post('/insert-trade', (req, res) =>{
   db.pool.query(insertTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], (err, result) => {
     if(err){
       next(err);
@@ -272,7 +271,7 @@ app.post('/insert-trade', (req, res, next) =>{
   })
 })
 
-app.delete('/delete-trade',function(req,res,next){
+app.delete('/delete-trade',function(req,res){
   db.pool.query(deleteTrade, [req.body.TradeID], function(err, result){
     if(err){
       next(err);
@@ -282,7 +281,7 @@ app.delete('/delete-trade',function(req,res,next){
   });
 });
 
-app.put('/update-trade',function(req,res,next){
+app.put('/update-trade',function(req,res){
   db.pool.query(updateTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], function(err, result){
     if(err){
       next(err);
@@ -300,7 +299,7 @@ app.get('/fills',function(req,res){
   });
 });
   
-app.post('/insert-fill', (req, res, next) =>{
+app.post('/insert-fill', (req, res) =>{
   db.pool.query(insertFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], (err, result) => {
     if(err){
       next(err);
@@ -310,7 +309,7 @@ app.post('/insert-fill', (req, res, next) =>{
   })
 })
 
-app.delete('/delete-fill',function(req,res,next){
+app.delete('/delete-fill',function(req,res){
   db.pool.query(deleteFill, [req.body.FillID], function(err, result){
     if(err){
       next(err);
@@ -320,7 +319,7 @@ app.delete('/delete-fill',function(req,res,next){
   });
 });
 
-app.put('/update-fill',function(req,res,next){
+app.put('/update-fill',function(req,res){
   db.pool.query(updateFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], function(err, result){
     if(err){
       next(err);
