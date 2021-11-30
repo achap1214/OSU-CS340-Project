@@ -9,7 +9,7 @@ var app = express();            // We need to instantiate an express object to i
 // app.set('PORT', 5757);
 var PORT = 5757;
 
-// var db = require('./database/db-connector.js')
+var db = require('./database/db-connector.js')
 
 app.use(express.json());
 app.use(express.urlencoded({
