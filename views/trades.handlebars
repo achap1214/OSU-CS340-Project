@@ -85,40 +85,40 @@
     </div>
     <div class="container mt-3" id="form">
         <h3>Add Trades</h3>
-        <form >
-          <div class="mb-3 mt-3">
+        <form id="add-trade-form" method="POST" action="/insert-trade">
+          <div class="form-group">
             <label for="TradeID">Trade ID</label>
-            <input type="tradeID" class="form-control" id="tradeID" placeholder="Enter Trade ID">
+            <input name="TradeID" type="text" class="form-control" id="TradeID" placeholder="Enter Trade ID">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Security Symbol</label>
-            <input type="securitySymbol" class="form-control" id="securitySymbol" placeholder="Enter Security Symbol">
+          <div class="form-group">
+            <label for="SecuritySymbol">Security Symbol</label>
+            <input name="SecuritySymbol" type="text" class="form-control" id="SecuritySymbol" placeholder="Enter Security Symbol">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Amount</label>
-            <input type="amount" class="form-control" id="amount" placeholder="Enter Amount">
+          <div class="form-group">
+            <label for="Amount">Amount</label>
+            <input name="Amount" type="text" class="form-control" id="Amount" placeholder="Enter Amount">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Trader ID</label>
-            <input type="traderID" class="form-control" id="traderID" placeholder="Enter Trader ID">
+          <div class="form-group">
+            <label for="TraderID">Trader ID</label>
+            <input name="TraderID" type="text" class="form-control" id="TraderID" placeholder="Enter Trader ID">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Manager ID</label>
-            <input type="managerID" class="form-control" id="managerID" placeholder="Enter Manager ID">
+          <div class="form-group">
+            <label for="ManagerID">Manager ID</label>
+            <input name="ManagerID" type="text" class="form-control" id="ManagerID" placeholder="Enter Manager ID">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Broker ID</label>
-            <input type="brokerID" class="form-control" id="brokerID" placeholder="Enter Broker ID">
+          <div class="form-group">
+            <label for="BrokerID">Broker ID</label>
+            <input name="BrokerID" type="text" class="form-control" id="BrokerID" placeholder="Enter Broker ID">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Time</label>
-            <input type="time" class="form-control" id="time" placeholder="Enter Time">
+          <div class="form-group">
+            <label for="Time">Time</label>
+            <input name="Time" type="text" class="form-control" id="Time" placeholder="Enter Time">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Date</label>
-            <input type="date" class="form-control" id="date" placeholder="Enter Date">
+          <div class="form-group">
+            <label for="Date">Date</label>
+            <input name="Date" type="text" class="form-control" id="Date" placeholder="Enter Date">
           </div>
-          <input type="button" class="add-row" value="Add Row">
+          <button type="submit" class="btn btn-primary">Add Trade</button>
         </form>
     </div>
 </body>

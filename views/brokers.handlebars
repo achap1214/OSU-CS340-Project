@@ -90,32 +90,32 @@
     <div id="form">
         <div class="container mt-3" id="form">
             <h3>Add Broker</h3>
-            <form >
-              <div class="mb-3 mt-3">
+            <form id="add-broker-form" method="POST" action="/insert-broker">
+              <div class="form-group">
                 <label for="BrokerID">Broker ID</label>
-                <input type="brokerID" class="form-control" id="brokerID" placeholder="Enter Broker ID">
+                <input name="BrokerID" type="text" class="form-control" id="BrokerID" placeholder="Enter Broker ID">
               </div>
-              <div class="mb-3">
-                <label for="pwd">Broker Name</label>
-                <input type="brokerName" class="form-control" id="brokerName" placeholder="Enter Broker Name">
+              <div class="form-group">
+                <label for="BrokerName">Broker Name</label>
+                <input name="BrokerName" type="text" class="form-control" id="BrokerName" placeholder="Enter Broker Name">
               </div>
-              <div class="mb-3">
-                <label for="pwd">Broker Street Address</label>
-                <input type="brokerStreetAddress" class="form-control" id="brokerStreetAddress" placeholder="Enter Broker Street Address">
+              <div class="form-group">
+                <label for="BrokerStreetAddress">Broker Street Address</label>
+                <input name="BrokerStreetAddress" type="text" class="form-control" id="BrokerStreetAddress" placeholder="Enter Broker Street Address">
               </div>
-              <div class="mb-3">
-                <label for="pwd">Broker City</label>
-                <input type="brokerCity" class="form-control" id="brokerCity" placeholder="Enter Broker City">
+              <div class="form-group">
+                <label for="BrokerCity">Broker City</label>
+                <input name="BrokerCity" type="text" class="form-control" id="BrokerCity" placeholder="Enter Broker City">
               </div>
-              <div class="mb-3">
-                <label for="pwd">Broker State</label>
-                <input type="brokerState" class="form-control" id="brokerState" placeholder="Enter Broker State">
+              <div class="form-group">
+                <label for="BrokerState">Broker State</label>
+                <input name="BrokerState" type="text" class="form-control" id="BrokerState" placeholder="Enter Broker State">
               </div>
-              <div class="mb-3">
-                <label for="pwd">Broker Zip Code</label>
-                <input type="brokerZipCode" class="form-control" id="brokerZipCode" placeholder="Enter Broker Zip Code">
+              <div class="form-group">
+                <label for="BrokerZipCode">Broker Zip Code</label>
+                <input name="BrokerZipCode" type="text" class="form-control" id="BrokerZipCode" placeholder="Enter Broker Zip Code">
               </div>
-              <input type="button" class="add-row" value="Add Row">
+              <button type="submit" class="btn btn-primary">Add Broker</button>
             </form>
         </div>
     </div>

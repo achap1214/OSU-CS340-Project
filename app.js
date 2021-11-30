@@ -92,35 +92,52 @@ app.get('/traders',function(req,res){
   });
 });
 
-  app.post('/insert-trader', (req, res, next) =>{
-    db.pool.query(insertTrader, [req.body.TraderFirstName, req.body.TraderLastName], (err, result) => {
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    })
-  })
-  
-  app.delete('/delete-trader',function(req,res,next){
-    db.pool.query(deleteTrader, [req.body.TraderID], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+app.post('/insert-trader', (req, res, next) =>{
+  let data = req.body;
+  let query = `INSERT INTO Traders(TradeID, TraderFirstName, TraderLastName) VALUES('${data.TradeID}', '${data.TraderFirstName}', '${data.TraderLastName}');`;
+  db.pool.query(query, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+        res.redirect('/traders');
+    }
   });
+});
   
-  app.put('/update-trader',function(req,res,next){
-    db.pool.query(updateTrader, [req.body.TraderFirstName, req.body.TraderLastName], function(err, result){
-      if(err){
-        next(err);
-        return;
+app.delete('/delete-trader',function(req,res,next){
+  let TraderID = req.query.TraderID;
+
+  // Query to delete a flight by flight_id.
+  let query = `DELETE FROM Traders WHERE TraderID = ${parseInt(TraderID)};`;
+
+  db.pool.query(query, function (error, rows, fields) {
+      if (error) {
+          console.log(error);
+          res.sendStatus(400);
+      } else {
+          res.redirect('/traders');
       }
-      res.send(result);
-    });
   });
+});
+
+app.put('/update-trader',function(req,res,next){
+  let TraderID = req.query.TraderID;
+  let TraderFirstName = req.query.TraderFirstName;
+  let TraderLastName = req.query.TraderLastName;
+
+  // Query to get a Customer record
+  let query = `UPDATE Traders SET TraderID = ${parseInt(TraderID)}, TraderFirstName = ${TraderFirstName}, TraderLastName = ${TraderLastName} WHERE TraderID = ${TraderID};`;
+
+  db.pool.query(query, function (error, rows, fields) {
+      if (error) {
+          console.log(error);
+          res.sendStatus(400);
+      } else {
+          res.redirect('/traders');
+      }
+  });
+});
 
 // Managers Page
 app.get('/managers',function(req,res){
@@ -130,35 +147,35 @@ app.get('/managers',function(req,res){
   });
 });
   
-  app.post('/insert-manager', (req, res, next) =>{
-    db.pool.query(insertManager, [req.body.ManagerFirstName, req.body.ManagerLastName], (err, result) => {
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    })
+app.post('/insert-manager', (req, res, next) =>{
+  db.pool.query(insertManager, [req.body.ManagerFirstName, req.body.ManagerLastName], (err, result) => {
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   })
-  
-  app.delete('/delete-manager',function(req,res,next){
-    db.pool.query(deleteManager, [req.body.ManagerID], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+})
+
+app.delete('/delete-manager',function(req,res,next){
+  db.pool.query(deleteManager, [req.body.ManagerID], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
-  
-  app.put('/update-manager',function(req,res,next){
-    db.pool.query(updateManager, [req.body.ManagerFirstName, req.body.ManagerLastName], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+});
+
+app.put('/update-manager',function(req,res,next){
+  db.pool.query(updateManager, [req.body.ManagerFirstName, req.body.ManagerLastName], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
+});
 
 // Brokers Page
 app.get('/brokers',function(req,res){
@@ -168,35 +185,35 @@ app.get('/brokers',function(req,res){
   });
 });
   
-  app.post('/insert-broker', (req, res, next) =>{
-    db.pool.query(insertBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], (err, result) => {
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    })
+app.post('/insert-broker', (req, res, next) =>{
+  db.pool.query(insertBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], (err, result) => {
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   })
-  
-  app.delete('/delete-broker',function(req,res,next){
-    db.pool.query(deleteBroker, [req.body.BrokerID], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+})
+
+app.delete('/delete-broker',function(req,res,next){
+  db.pool.query(deleteBroker, [req.body.BrokerID], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
-  
-  app.put('/update-broker',function(req,res,next){
-    db.pool.query(updateBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+});
+
+app.put('/update-broker',function(req,res,next){
+  db.pool.query(updateBroker, [req.body.BrokerName, req.body.BrokerStreetAddress, req.body.BrokerCity, req.body.BrokerState, req.body.BrokerZipCode], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
+});
 
 // Securities Page
 app.get('/securities',function(req,res){
@@ -206,35 +223,35 @@ app.get('/securities',function(req,res){
   });
 });
   
-  app.post('/insert-security', (req, res, next) =>{
-    db.pool.query(insertSecurity, [req.body.SecuritySymbol, req.body.CompanyName], (err, result) => {
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    })
+app.post('/insert-security', (req, res, next) =>{
+  db.pool.query(insertSecurity, [req.body.SecuritySymbol, req.body.CompanyName], (err, result) => {
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   })
-  
-  app.delete('/delete-security',function(req,res,next){
-    db.pool.query(deleteSecurity, [req.body.SecurityID], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+})
+
+app.delete('/delete-security',function(req,res,next){
+  db.pool.query(deleteSecurity, [req.body.SecurityID], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
-  
-  app.put('/update-security',function(req,res,next){
-    db.pool.query(updateSecurity, [req.body.SecuritySymbol, req.body.CompanyName], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+});
+
+app.put('/update-security',function(req,res,next){
+  db.pool.query(updateSecurity, [req.body.SecuritySymbol, req.body.CompanyName], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
+});
 
 // Trades Page
 app.get('/trades',function(req,res){
@@ -244,35 +261,35 @@ app.get('/trades',function(req,res){
   });
 });
   
-  app.post('/insert-trade', (req, res, next) =>{
-    db.pool.query(insertTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], (err, result) => {
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    })
+app.post('/insert-trade', (req, res, next) =>{
+  db.pool.query(insertTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], (err, result) => {
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   })
-  
-  app.delete('/delete-trade',function(req,res,next){
-    db.pool.query(deleteTrade, [req.body.TradeID], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+})
+
+app.delete('/delete-trade',function(req,res,next){
+  db.pool.query(deleteTrade, [req.body.TradeID], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
-  
-  app.put('/update-trade',function(req,res,next){
-    db.pool.query(updateTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+});
+
+app.put('/update-trade',function(req,res,next){
+  db.pool.query(updateTrade, [req.body.SecuritySymbol, req.body.Amount, req.body.TraderID, req.body.ManagerID, req.body.BrokerID, req.body.Time, req.body.Date], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
+});
 
 // Fills Page
 app.get('/fills',function(req,res){
@@ -282,35 +299,35 @@ app.get('/fills',function(req,res){
   });
 });
   
-  app.post('/insert-fill', (req, res, next) =>{
-    db.pool.query(insertFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], (err, result) => {
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    })
+app.post('/insert-fill', (req, res, next) =>{
+  db.pool.query(insertFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], (err, result) => {
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   })
-  
-  app.delete('/delete-fill',function(req,res,next){
-    db.pool.query(deleteFill, [req.body.FillID], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+})
+
+app.delete('/delete-fill',function(req,res,next){
+  db.pool.query(deleteFill, [req.body.FillID], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
-  
-  app.put('/update-fill',function(req,res,next){
-    db.pool.query(updateFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], function(err, result){
-      if(err){
-        next(err);
-        return;
-      }
-      res.send(result);
-    });
+});
+
+app.put('/update-fill',function(req,res,next){
+  db.pool.query(updateFill, [req.body.TradeID, req.body.SecuritySymbol, req.body.Amount, req.body.Time, req.body.Date], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    res.send(result);
   });
+});
 
 // Error Routes
 app.use(function(req, res){

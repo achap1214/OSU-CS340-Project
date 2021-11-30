@@ -86,20 +86,20 @@
         </div>
             <div class="container mt-3" id="form">
                 <h3>Add Trader</h3>
-                <form >
-                  <div class="mb-3 mt-3">
+                <form id="add-trader-form" method="POST" action="/insert-trader">
+                  <div class="form-group">
                     <label for="TraderID">Trader ID</label>
-                    <input type="traderID" class="form-control" id="traderID" placeholder="Enter Trader ID">
+                    <input name="TraderID" type="text" class="form-control" id="TraderID" placeholder="Enter Trader ID" required>
                   </div>
-                  <div class="mb-3">
-                    <label for="pwd">Trader First Name</label>
-                    <input type="firstName" class="form-control" id="firstName" placeholder="Enter Trader First Name">
+                  <div class="form-group">
+                    <label for="TraderFirstName">Trader First Name</label>
+                    <input name="TraderFirstName" type="text" class="form-control" id="TraderFirstName" placeholder="Enter Trader First Name" required>
                   </div>
-                  <div class="mb-3">
-                    <label for="pwd">Trader Last Name</label>
-                    <input type="lastName" class="form-control" id="lastName" placeholder="Enter Trader Last Name">
+                  <div class="form-group">
+                    <label for="TraderLastName">Trader Last Name</label>
+                    <input name="TraderLastName" type="text" class="form-control" id="TraderLastName" placeholder="Enter Trader Last Name" required>
                   </div>
-                  <input type="button" class="add-row" value="Add Row">
+                  <button type="submit" class="btn btn-primary">Add Trader</button>
                 </form>
             </div>
     </div>

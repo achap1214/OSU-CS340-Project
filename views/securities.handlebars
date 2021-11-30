@@ -82,20 +82,20 @@
     </div>
     <div class="container mt-3" id="form">
         <h3>Add Securities</h3>
-        <form >
-          <div class="mb-3 mt-3">
+        <form id="add-security-form" method="POST" action="/insert-security">
+          <div class="form-group">
             <label for="SecurityID">Security ID</label>
-            <input type="securityID" class="form-control" id="securityID" placeholder="Enter Security ID">
+            <input name="SecurityID" type="text" class="form-control" id="SecurityID" placeholder="Enter Security ID">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Security Symbol</label>
-            <input type="securitySymbol" class="form-control" id="securitySymbol" placeholder="Enter Security Symbol">
+          <div class="form-group">
+            <label for="SecuritySymbol">Security Symbol</label>
+            <input name="SecuritySymbol" type="text" class="form-control" id="SecuritySymbol" placeholder="Enter Security Symbol">
           </div>
-          <div class="mb-3">
-            <label for="pwd">Company Name</label>
-            <input type="companyName" class="form-control" id="companyName" placeholder="Enter Company Name">
+          <div class="form-group">
+            <label for="CompanyName">Company Name</label>
+            <input name="CompanyName" type="text" class="form-control" id="CompanyName" placeholder="Enter Company Name">
           </div>
-          <input type="button" class="add-row" value="Add Row">
+          <button type="submit" class="btn btn-primary" value="Add Security">
         </form>
     </div>
 

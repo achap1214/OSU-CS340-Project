@@ -80,20 +80,20 @@
         <div id="form">
             <div class="container mt-3" id="form">
                 <h3>Add Manager</h3>
-                <form >
-                  <div class="mb-3 mt-3">
+                <form id="add-manager-form" method="POST" action="/insert-manager">
+                  <div class="form-group">
                     <label for="ManagerID">Manager ID</label>
-                    <input type="ManagerID" class="form-control" id="managerID" placeholder="Enter Manager ID">
+                    <input name="ManagerID" type="text" class="form-control" id="ManagerID" placeholder="Enter Manager ID">
                   </div>
-                  <div class="mb-3">
-                    <label for="pwd">Manager First Name</label>
-                    <input type="ManagerFirstName" class="form-control" id="ManagerFirstName" placeholder="Enter Manager First Name">
+                  <div class="form-group">
+                    <label for="ManagerFirstName">Manager First Name</label>
+                    <input name="ManagerFirstName" type="text" class="form-control" id="ManagerFirstName" placeholder="Enter Manager First Name">
                   </div>
-                  <div class="mb-3">
-                    <label for="pwd">Manager Last Name</label>
-                    <input type="ManagerLastName" class="form-control" id="ManagerLastName" placeholder="Enter Manager Last Name">
+                  <div class="form-group">
+                    <label for="ManagerLastName">Manager Last Name</label>
+                    <input name="ManagerLastName" type="text" class="form-control" id="ManagerLastName" placeholder="Enter Manager Last Name">
                   </div>
-                  <input type="button" class="add-row" value="Add Row">
+                  <button type="submit" class="btn btn-primary">Add Manager</button>
                 </form>
             </div>
         </div>
