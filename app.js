@@ -9,21 +9,29 @@ var app = express();            // We need to instantiate an express object to i
 // app.set('PORT', 5757);
 var PORT = 5757;
 
-var db = require('./database/db-connector.js')
+// var db = require('./database/db-connector.js')
 
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
 
+var exphbs = require('express-handlebars');
+
+app.engine('.handlebars', exphbs({
+  extname: ".handlebars"
+}));
+
+app.set('view engine', '.handlebars');
+
 app.use('/', express.static('public'));
-app.set('db', db);
-app.use('/traders', require('./traders.js'));
-app.use('/managers', require('./managers.js'));
-app.use('/brokers', require('./brokers.js'));
-app.use('/securities', require('./securities.js'));
-app.use('/trades', require('./trades.js'));
-app.use('/fills', require('./fills.js'));
+// app.set('db', db);
+// app.use('/traders', require('./traders.js'));
+// app.use('/managers', require('./managers.js'));
+// app.use('/brokers', require('./brokers.js'));
+// app.use('/securities', require('./securities.js'));
+// app.use('/trades', require('./trades.js'));
+// app.use('/fills', require('./fills.js'));
 app.use('/', express.static('public'));
 
 // Title: index.js
@@ -353,6 +361,6 @@ app.use(function(err, req, res, next){
 //     console.log('Express started on http://localhost:' + app.get('PORT') + '; press Ctrl-C to terminate.')
 // });
 
-app.listen(PORT), function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
-  console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
-};
+app.listen(PORT, () => {            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
+  console.log('Server listening on port ${PORT}...');
+});

@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Albert",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "forever": "^4.0.1"
+    "express-handlebars": "^5.2.1",
+    "forever": "^0.14.2"
   },
-  "devDependencies": {},
   "description": ""
 }
