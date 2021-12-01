@@ -105,7 +105,7 @@ app.get('/insert-trader', (req, res) =>{
 });
 
 app.get('/delete-trader',function(req,res,next){
-  db.pool.query("DELETE FROM "+req.query.table+" WHERE TraderID=?", parseInt([req.query.id]), function(error, result){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE TraderID=?", [req.query.id], function(error, result){
     if(error){
       console.log(error);
       res.sendStatus(400);
@@ -151,14 +151,14 @@ app.get('/insert-manager', (req, res) =>{
   })
 })
 
-app.delete('/delete-manager',function(req,res){
-  db.pool.query(deleteManager, [req.body.ManagerID], function(err, result){
-    if(err){
-      next(err);
-      return;
+app.get('/delete-manager',function(req,res,next){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE ManagerID=?", [req.query.id], function(error, result){
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
-  });
+    res.redirect("/" + req.query.page);
+  })
 });
 
 app.put('/update-manager',function(req,res){
@@ -190,14 +190,14 @@ app.get('/insert-broker', (req, res) =>{
   })
 })
 
-app.delete('/delete-broker',function(req,res){
-  db.pool.query(deleteBroker, [req.body.BrokerID], function(err, result){
-    if(err){
-      next(err);
-      return;
+app.get('/delete-broker',function(req,res,next){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE BrokerID=?", [req.query.id], function(error, result){
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
-  });
+    res.redirect("/" + req.query.page);
+  })
 });
 
 app.put('/update-broker',function(req,res){
@@ -239,14 +239,14 @@ app.get('/insert-security', (req, res) =>{
   })
 })
 
-app.delete('/delete-security',function(req,res){
-  db.pool.query(deleteSecurity, [req.body.SecurityID], function(err, result){
-    if(err){
-      next(err);
-      return;
+app.get('/delete-security',function(req,res,next){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE SecurityID=?", [req.query.id], function(error, result){
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
-  });
+    res.redirect("/" + req.query.page);
+  })
 });
 
 app.put('/update-security',function(req,res){
@@ -278,14 +278,14 @@ app.get('/insert-trade', (req, res) =>{
   })
 })
 
-app.delete('/delete-trade',function(req,res){
-  db.pool.query(deleteTrade, [req.body.TradeID], function(err, result){
-    if(err){
-      next(err);
-      return;
+app.get('/delete-trade',function(req,res,next){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE TradeID=?", [req.query.id], function(error, result){
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
-  });
+    res.redirect("/" + req.query.page);
+  })
 });
 
 app.put('/update-trade',function(req,res){
@@ -327,14 +327,14 @@ app.get('/insert-fill', (req, res) =>{
   })
 })
 
-app.delete('/delete-fill',function(req,res){
-  db.pool.query(deleteFill, [req.body.FillID], function(err, result){
-    if(err){
-      next(err);
-      return;
+app.get('/delete-fill',function(req,res,next){
+  db.pool.query("DELETE FROM "+req.query.table+" WHERE FillID=?", [req.query.id], function(error, result){
+    if(error){
+      console.log(error);
+      res.sendStatus(400);
     }
-    res.send(result);
-  });
+    res.redirect("/" + req.query.page);
+  })
 });
 
 app.put('/update-fill',function(req,res){
