@@ -117,7 +117,7 @@ app.get('/delete-trader',function(req,res,next){
 app.get('/update-trader',function(req,res){
   // var values = [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID];
   // let query = `UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?`
-  pool.query("UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?",
+  db.pool.query("UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?",
   [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID],function(error, result){
     if (error) {
       console.log(error);
