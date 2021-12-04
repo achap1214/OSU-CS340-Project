@@ -84,37 +84,41 @@
                             </form>
                         </td>
                         <td>
-                            <button type="submit" class="btn btn-warning">Edit</button>
+                            <button onclick="editTrader({{this.TraderID}},'{{this.TraderFirstName}}','{{this.TraderLastName}}')" type="submit" class="btn btn-warning">Edit</button>
                         </td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
-            <div class="container mt-3" id="form">
-                <h3>Add Trader</h3>
-                <form id="add-trader-form" method="GET" action="/insert-trader">
-                  <div class="form-group">
-                    <label for="TraderID">Trader ID</label>
-                    <input name="TraderID" type="text" class="form-control" id="TraderID" placeholder="Enter Trader ID" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="TraderFirstName">Trader First Name</label>
-                    <input name="TraderFirstName" type="text" class="form-control" id="TraderFirstName" placeholder="Enter Trader First Name" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="TraderLastName">Trader Last Name</label>
-                    <input name="TraderLastName" type="text" class="form-control" id="TraderLastName" placeholder="Enter Trader Last Name" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Add Trader</button>
-                </form>
-            </div>
 
-            {{!Update box if shown}}
-            <div class="container mt-3" id="form">
-               
+        <div class="container mt-3" id="form">
+            <h3>Add Trader</h3>
+            <form id="add-trader-form" method="GET" action="/insert-trader">
+            <div class="form-group">
+                <label for="TraderID">Trader ID</label>
+                <input name="TraderID" type="text" class="form-control" id="TraderID" placeholder="Enter Trader ID" required>
             </div>
+            <div class="form-group">
+                <label for="TraderFirstName">Trader First Name</label>
+                <input name="TraderFirstName" type="text" class="form-control" id="TraderFirstName" placeholder="Enter Trader First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="TraderLastName">Trader Last Name</label>
+                <input name="TraderLastName" type="text" class="form-control" id="TraderLastName" placeholder="Enter Trader Last Name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Trader</button>
+            </form>
+        </div>
+
+                    {{!Update box if shown}}
+        <div class="container mt-3" id="form">
+            
+        </div>
+
+
     </div>
+
     <script type = "text/javascript" src="SearchFunctions.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     {{!-- <script>

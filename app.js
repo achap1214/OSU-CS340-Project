@@ -7,7 +7,7 @@ var express = require('express');   // We are using the express library for the 
 var app = express();            // We need to instantiate an express object to interact with the server in our code
 
 // app.set('PORT', 5757);
-var PORT = 5757;
+var PORT = 7575;
 
 var db = require('./database/db-connector.js')
 
