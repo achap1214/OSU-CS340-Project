@@ -3,13 +3,16 @@
 /*
     SETUP
 */
-var express = require('express');   // We are using the express library for the web server
-var app = express();            // We need to instantiate an express object to interact with the server in our code
+const express = require('express');
+const app = express();
+const exphbs = require('express-handlebars');
+
 
 // app.set('PORT', 5757);
-var PORT = 7575;
+const PORT = 7575;
 
-var db = require('./database/db-connector.js')
+// Database connection
+const db = require('./database/db-connector.js')
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -31,7 +34,7 @@ app.use('/', express.static('public'));
 // app.use('/securities', require('./securities.js'));
 // app.use('/trades', require('./trades.js'));
 // app.use('/fills', require('./fills.js'));
-app.use('/', express.static('public'));
+
 
 // Title: index.js
 // Date: 11/19/2021
@@ -73,13 +76,9 @@ const deleteFill = 'DELETE FROM Fills WHERE FillID = ?;'
 /*
     ROUTES
 */
-// app.get('/', function(req, res)                 // This is the basic syntax for what is called a 'route'
-//     {
-//         res.send("The server is running!")      // This function literally sends the string "The server is running!" to the computer
-//     });                                         // requesting the web site.
 
 // Home Page
-app.get('/', function(req, res){
+app.get('/', function(req, res, next){
     res.render('index');
 });
 
@@ -117,8 +116,10 @@ app.get('/delete-trader',function(req,res,next){
 app.get('/update-trader',function(req,res){
   // var values = [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID];
   // let query = `UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?`
+  const trader_value = req.query.TraderID;
+  if(trader_value == -1) trader_value = null;
   db.pool.query("UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?",
-  [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID],function(error, result){
+  [trader_value, req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID],function(error, result){
     if (error) {
       console.log(error);
       res.sendStatus(400);
