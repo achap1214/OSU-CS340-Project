@@ -84,7 +84,8 @@
                             </form>
                         </td>
                         <td>
-                            <button onclick="editTrader({{this.TraderID}},'{{this.TraderFirstName}}','{{this.TraderLastName}}')" type="submit" class="btn btn-warning">Edit</button>
+                            {{!-- <button onclick="/traders/{{TraderID}}" type="submit" class="btn btn-warning">Edit</button> --}}
+                            <a href="traders/{{TraderID}}">Edit</a>
                         </td>
                     </tr>
                     {{/each}}
@@ -109,11 +110,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Add Trader</button>
             </form>
-        </div>
-
-                    {{!Update box if shown}}
-        <div class="container mt-3" id="form">
-            
         </div>
 
 

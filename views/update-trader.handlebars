@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang=eng>
+<head>
+
+<link rel="stylesheet" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+
+<div class="container mt-3" id="form">
+            <h3>Update {{Traders.TraderFirstName}} {{Traders.TraderLastName}}:</h3>
+            <form id="update-trader" method="POST" action="/trader">
+            <div class="form-group">
+                <label for="TraderFirstName">Trader First Name </label>
+                <input name="TraderFirstName" type="text" class="form-control" id="TraderFirstName" value={{Traders.TraderFirstName}} required>
+            </div>
+            <div class="form-group">
+                <label for="TraderLastName">Trader Last Name</label>
+                <input name="TraderLastName" type="text" class="form-control" id="TraderLastName" value={{Traders.TraderLastName}} required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Trader</button>
+            </form>
+</div>
