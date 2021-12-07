@@ -10,6 +10,7 @@ var app = express();            // We need to instantiate an express object to i
 var PORT = 7575;
 
 var db = require('./database/db-connector.js')
+const mysql = require('./database/db-connector.js')
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -23,9 +24,9 @@ app.engine('.handlebars', exphbs({
 }));
 
 app.set('view engine', '.handlebars');
-
+app.set('mysql', mysql);
 app.use('/', express.static('public'));
-// app.use('/traders', require('./traders.js'));
+app.use('/traders', require('./traders.js'));
 // app.use('/managers', require('./managers.js'));
 // app.use('/brokers', require('./brokers.js'));
 // app.use('/securities', require('./securities.js'));

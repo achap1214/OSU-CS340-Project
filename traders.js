@@ -27,7 +27,7 @@ router.get('/:TraderID', function(req, res){
     getTrader(res, mysql, context, req.params.TraderID, complete);
     function complete(){
         callbackCount++;
-        if(callbackCount >= 2){
+        if(callbackCount >= 1){
             res.render('update-trader', context);
         }
 
