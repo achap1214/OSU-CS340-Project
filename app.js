@@ -3,37 +3,34 @@
 /*
     SETUP
 */
-const express = require('express');
-const app = express();
-const exphbs = require('express-handlebars');
-const bodyParser = require('body-parser');
-const mysql = require('database/db-connector.js')
-
+var express = require('express');   // We are using the express library for the web server
+var app = express();            // We need to instantiate an express object to interact with the server in our code
 
 // app.set('PORT', 5757);
-const PORT = 7575;
+var PORT = 7575;
 
-// Database connection
-const db = require('./database/db-connector.js')
+var db = require('./database/db-connector.js')
 
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
 
+var exphbs = require('express-handlebars');
+
 app.engine('.handlebars', exphbs({
   extname: ".handlebars"
 }));
 
 app.set('view engine', '.handlebars');
-app.use('/static', express.static('public'));
-app.use('/traders', require('./traders.js'));
-app.use('/managers', require('./managers.js'));
-app.use('/brokers', require('./brokers.js'));
-app.use('/securities', require('./securities.js'));
-app.use('/trades', require('./trades.js'));
-app.use('/fills', require('./fills.js'));
-app.set('mysql', mysql);
+
+app.use('/', express.static('public'));
+// app.use('/traders', require('./traders.js'));
+// app.use('/managers', require('./managers.js'));
+// app.use('/brokers', require('./brokers.js'));
+// app.use('/securities', require('./securities.js'));
+// app.use('/trades', require('./trades.js'));
+// app.use('/fills', require('./fills.js'));
 app.use('/', express.static('public'));
 
 // Title: index.js
@@ -76,9 +73,13 @@ const deleteFill = 'DELETE FROM Fills WHERE FillID = ?;'
 /*
     ROUTES
 */
+// app.get('/', function(req, res)                 // This is the basic syntax for what is called a 'route'
+//     {
+//         res.send("The server is running!")      // This function literally sends the string "The server is running!" to the computer
+//     });                                         // requesting the web site.
 
 // Home Page
-app.get('/', function(req, res, next){
+app.get('/', function(req, res){
     res.render('index');
 });
 
@@ -113,21 +114,23 @@ app.get('/delete-trader',function(req,res,next){
   })
 });
 
-// app.get('/update-trader',function(req,res){
-//   // var values = [req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID];
-//   // let query = `UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?`
-//   const trader_value = req.query.TraderID;
-//   if(trader_value == -1) trader_value = null;
-//   db.pool.query("UPDATE Traders SET TraderFirstName=?, TraderLastName=? WHERE TraderID=?",
-//   [trader_value, req.query.TraderFirstName, req.query.TraderLastName, req.query.TraderID],function(error, result){
-//     if (error) {
-//       console.log(error);
-//       res.sendStatus(400);
-//     }
-//     res.redirect('/traders');
-//   })
+app.put('/update-trader',function(req,res){
+  let TraderID = req.query.TraderID;
+  let TraderFirstName = req.query.TraderFirstName;
+  let TraderLastName = req.query.TraderLastName;
 
-// });
+  // Query to get a Customer record
+  let query = `UPDATE Traders SET TraderID = ${parseInt(TraderID)}, TraderFirstName = ${TraderFirstName}, TraderLastName = ${TraderLastName} WHERE TraderID = ${TraderID};`;
+
+  db.pool.query(query, function (error, rows, fields) {
+      if (error) {
+          console.log(error);
+          res.sendStatus(400);
+      } else {
+          res.redirect('/traders');
+      }
+  });
+});
 
 // Managers Page
 app.get('/managers',function(req,res){
